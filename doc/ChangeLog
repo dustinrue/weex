@@ -1,0 +1,297 @@
+* History
+
+ + 2000/06/13 Ver 2.6.1
+   - Support for MACOS type remote server.
+   - Bugfix for reporting the wrong number of sent/delected files
+     in log file.
+   - French translations (fr.po) has been added.
+     Thanks to Olivier Tharan <olive@minet.net>.
+
+ + 2000/05/22 Ver 2.6.0
+   - Bugfix for trying to remove current directory
+     when remove a directory.
+   - The way of check of DestDir is changed.
+     `It exists if "mkdir <DestDir>" fails.' to
+     `It exists if "chdir <DestDir>" successes.'
+   - Run "chdir <DestDir>" at connection for safety reasons.
+   - A new parameter `ChdirAtConnection' has been added. It
+     controls the above.
+   - Dutch translations (nl.po) has been added.
+     Thanks to Jos Smeets <jsmeets@knoware.nl>.
+
+ + 2000/05/03 Ver 2.5.4
+   - A new parameter `FollowSymlinks' has been added. 
+     By default, weex doesn't expand symbolic links on local
+     for safety reasons. If you need expansion of symbolic links,
+     please set this parameter to `true'.
+     Thanks to Jeff Abrahamson <abrahj01@molbio.sbphrd.com>.
+
+ + 2000/04/16 Ver 2.5.3
+   - Bugfix for parsing remote directory names incorrectly
+     with some FTP server based on Windows NT.
+     Thanks to Craig Wilkie.
+
+ + 2000/03/24 Ver 2.5.2
+   - Even if suppress messages, weex outputs one new line when
+     disconnect.
+   - Add Spanish translations. (es.po)
+     Thanks to Gorka Olaizola <olsago@jet.es>.
+
+ + 2000/02/29 Ver 2.5.1
+   - If a password can not be found in the configuration file,
+     weex asks for it on the terminal.
+     Thanks to Mohammed Waleed Kadous <waleed@cse.unsw.EDU.AU>.
+
+ + 2000/02/25 Ver 2.5.0
+   - Directory structure and file names are saved in cache.
+     It suppresses LIST command. So it makes transfer much faster.
+     WARNING! A cache file of this version is NOT compatible
+     with previous version. Please remove all cache files as the
+     following before using.
+
+       % rm ~/.weex/weex.cache.*
+
+   - Suppressing CWD command by using absolute path as argument
+     of FTP command. It makes transfer much faster.
+   - Parameter `SupportFor@Nifty' is removed. Please modify
+     a configuration file.
+     It isn't needed from this version.
+   - Weex outputs `Processing' message when specify multiple hosts
+     as command line argument.
+   - If there isn't the directory specified as DestDir, create it.
+   - Add a new parameter `ShowHiddenFile'. This is for FTP server
+     which doesn't show hidden files (starting with a dot) by default.
+   - Add a new parameter `PreservePermissionDir'. In these directories,
+     weex copies access permission of the local file to the remote one.
+   - Add a new option `--rebuild-cache'. If cache file is broken, use this.
+   - Add a new option `--debug-ftplib'. Output messages from/to FTP server.
+   - Update de.po.
+     Thanks to Christian Ullrich <chris@chrullrich.de>.
+
+ + 2000/01/09 Ver 2.3.0
+   - The bug is fixed that weex crashes when there is a parameter
+     before defining section in a configuration file.
+   - Add a new option `--test' that doesn't actually change
+     remote files/directories.
+   - The bug is fixed that a cache file is broken when weex processes
+     the file which included blank in its name.
+   - When weex changes the current directory, it removes
+     the last slash of directory name.
+   - Support for the FTP server which doesn't output group name when `ls'.
+   - Support for port mode for the FTP server which doesn't support
+     passive mode by a new parameter `FtpPassive'. 
+   - Update de.po.
+     Thanks to Christian Ullrich <chris@chrullrich.de>.
+
+ + 1999/12/20 Ver 2.2.0
+   - Support for configuration of files/directories (except `SrcDir'
+     and `DestDir') as relative path.
+   - Add a new parameter `KeepRemoteDir'.
+     Files in this directory are not removed when they don't exist
+     in the local directory.
+   - Support for Geocities. It is recognized automatically.
+
+ + 1999/12/11 Ver 2.1.2
+   - The bug is fixed that processing a symlink is wrong again.
+     Thanks to Christian Ullrich <chris@chrullrich.de>.
+
+ + 1999/12/10 Ver 2.1.1
+   - Update de.po.
+     Thanks to Christian Ullrich <chris@chrullrich.de>.
+   - Some messages are modified.
+   - The bug is fixed that processing a symlink is wrong.
+
+ + 1999/12/09 Ver 2.1.0
+   - Update de.po.
+     Thanks to Christian Ullrich <chris@chrullrich.de>.
+   - Support for Solaris.
+   - Support for a file whose name includes spaces.
+   - The parameter `LsAtNifty' is changed to `SupportFor@Nifty'.
+     Please type as the following.
+
+       % cd ~/.weex
+       % mv weexrc weexrc.old
+       % sed -e "s/LsAtNifty/SupportFor@Nifty/" < weexrc.old > weexrc
+
+   - Weex continues processing if it receives a minor error.
+   - Retry to send when weex fails in sending a file.
+     The maximum times of retrying can be specified by `MaxRetryToSend'.
+   - Add a logging facility. It would be useful for using weex with cron
+     or background execution.
+
+ + 1999/11/29 Ver 2.0.7
+   - Support for Windows_NT type remote server.
+   - The file name of the temporary file stored file lists on remote
+     server is made by tempnam().
+     You can use multiple weex at the same time.
+
+ + 1999/11/25 Ver 2.0.6
+   - Modify documents.
+   - Rewrite set_default() in config.c.
+   - The following items are for supporting FreeBSD.
+     Thanks to Julian C. Dunn <jdunn@aquezada.com>.
+     Uses gnuregex.h prior to regex.h.
+   - If constant macro `PATH_MAX' is undefined, define as 512.
+   - Uses strtok() instead of sscanf() because a compiler on FreeBSD
+     outputs warnings when use `%as' in sscanf().
+   - The bug is fixed that the progress information is always 0.
+
+ + 1999/11/14 Ver 2.0.5a
+   - Update de.po.
+     Thanks to Christian Ullrich <chris@chrullrich.de>.
+
+ + 1999/11/13 Ver 2.0.5
+   - The bug is fixed that the file at the first of directory entry
+     on remote side is ignored. It caused that the file is not sent
+     or weex outputs `Cannot make directory `foo'.' and exit.
+   - Add a debug facility. It outputs many debug outputs, when weex runs.
+     Compile weex with `./configure --enable-debug' to use this facility.
+
+ + 1999/11/10 Ver 2.0.4
+   - Some memory leaks are fixed.
+   - Support for a symbolic link. It works correctly on local side.
+     Thanks to seagull <seagull.hiroki@nifty.ne.jp>.
+   - The bug is fixed that the progress information is broken when sends
+     the file whose size is more than 20MB.
+
+ + 1999/11/08 Ver 2.0.3a
+   - Add German translations. (de.po)
+     Thanks to Christian Ullrich <chris@chrullrich.de>.
+
+ + 1999/11/07 Ver 2.0.3
+   - The fatal bug missing subscript of array is fixed. It caused
+     weex can't get the list of remote directory in some FTP server.
+     This bug was entered in Ver 2.0.2. Sorry.
+
+ + 1999/11/07 Ver 2.0.2
+   - The bug is fixed that local variable `put_config_flag' is not
+     initialized.
+   - Some memory leaks are fixed.
+   - Support for @Nifty. Thanks to seagull <seagull.hiroki@nifty.ne.jp>.
+
+ + 1999/11/06 Ver 2.0.1a
+   - Add a example to sample.weexrc that You have multiple web sites
+     on one ftp account.
+     This technique would be useful for large website builders.
+
+ + 1999/11/06 Ver 2.0.1
+   - If you do not have reading permission of the configuration file,
+     output warning message at execution.
+   - Stop the program when ChangePermissionDir is configured but
+     ChangePermission is not.
+   - The bug is fixed that changing directory fails if DestDir (or SrcDir)
+     is root directory ("/").
+
+ + 1999/11/04 Ver 2.0.0
+   - Even if the progress information runs up to 100%, it continues
+     being displayed until finishing to send it.
+   - If you do a weex -h with no config file, it prints the warning
+     message and the normal -h output.
+   - Some messages are modified.
+   - A access permission of the configuration file is allowed
+     ?00.
+   - The bug is fixed that when a password is not configured,
+     the program crashes.
+   - The configuration parameter and value `OverwriteImpossible=True'
+     is changed to `OverwriteOK=False'.
+   - The bug is fixed that if the remote machine's clock is slow,
+     non-updated files are sent.
+   - Add a new option `-d' to check whether the configuration file is read
+     correctly.
+   - Update the manpage by Chris X Edwards <chrisxed@usa.net>.
+     He proofread README and messages in the program.
+     And besides, he sent many suggestions and bug reports
+     to me. Thanks!
+
+ + 1999/10/29 Ver 1.9.9
+   - Rewrite from scratch.
+   - The program name is changed to `weex'.
+     The configuration file and directory name and etc are
+     changed.
+
+ + 1999/10/07 Ver 1.7.3a
+   - Includes the manpage written by Chris X Edwards <chrisxed@usa.net>.
+
+ + 1999/09/27 Ver 1.7.3
+   - Some messages are modified.
+
+ + 1999/09/24 Ver 1.7.2
+   - The cache file is divided by host number.
+
+ + 1999/09/12 Ver 1.7.1
+   - Uses shhopt instead of parseopt.
+   - Add a new option `-V | --version'.
+
+ + 1999/08/13 Ver 1.7.0
+   - The program name is changed.
+     The configuration file and directory name and etc are
+     changed from `*iwe*' to `*fwe*'.
+   - Apply patch from Masashi Itou <webmaster@maitou.gr.jp>.
+     It offers the following.
+   - The bug is fixed that deadlock when STOR is permission error.
+   - Support for Chmod. Specify variable [ExecDir_*] to change access
+     permission of files to 777.
+   - Support for ftpd that cannot overwrite.
+     Specify variable [CantOverwrite_*] to use this function.
+   - Process the extensions more correctly.
+
+ + 1999/08/08 Ver 1.6.4
+   - Uses ioptparse instead of shhopt for parsing command line
+     options.
+
+ + 1999/07/19 Ver 1.6.3
+   - The usage is modified a little.
+
+ + 1999/07/09 Ver 1.6.2
+   - The bug is fixed that cannot compile when don't use NLS.
+
+ + 1999/07/07 Ver 1.6.1
+   - The bug is fixed that host number processing have a mistake.
+
+ + 1999/06/29 Ver 1.6.0a
+   - The documents are divided.
+
+ + 1999/06/11 Ver 1.6.0
+   - Read the configuration file at `~/.iwerc' and `~/.iwe/iwerc'.
+   - Make the directory `~/.iwe/' in startup.
+   - Remove "ListTemp" from the configuration file.
+
+ + 1999/06/09 Ver 1.5.0
+   - Uses shhopt for parsing command line options.
+   - The bug is fixed that cannot send files made in the 1970's.
+   - Uses "Inchiki Configuraion File Parse Library 2.0.1" for
+     parsing the configuraion file.
+
+ + 1999/05/21 Ver 1.4.0
+   - Support for autoconf, automake and gettext.
+   - When the color restores, use system default instead of white.
+
+ + 1999/04/13 Ver 1.3.2
+   - The bug is fixed that the process doesn't stop even if the
+     configuration file is broken.
+
+ + 1999/04/05 Ver 1.3.1
+   - Error messages output to stderr.
+
+ + 1999/04/03 Ver 1.3.0
+   - Use "Inchiki Configuraion File Reading Library".
+     Attention! The configuration file loses compatibility.
+   - Can process up to 500 files in one directory.
+
+ + 1999/03/16 Ver 1.2.0
+   - Support for I18N by catgets.
+   - A fatal bug that get wrong file name (made last year ago) is fixed.
+   - Version notation is changed.
+
+ + 1999/02/14 Ver 1.11
+   - Includes English documents.
+   - Some messages are modified.
+
+ + 1999/02/13 Ver 1.10
+   - Command line options are available.
+   - Japanese and English are available (-e and -j option).
+   - Add a new option `-f' (sending by force).
+   - Add a new option `-s' (output no message).
+
+ + 1999/02/12 Ver 1.00
+   - First release. It has all function that I want.

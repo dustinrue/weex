@@ -1,0 +1,38 @@
+* FAQ
+
+Q.1 The progress information that is displayed when weex sends a file
+    is incorrect.
+    It displays about 50KB just after starting to send. In addition,
+    even if it runs up to 100%, it doesn't finish sending soon.
+
+A.1 I guess that Linux kernel has a buffer. The other FTP clients
+    has the same problem. If you know a way of avoiding it, please
+    tell me it.
+
+
+Q.2 Weex fails in changing a remote diretory. It outputs as the following.
+
+---------------------------------------------------------------------
+% weex foo
+Connect    : www.foo.com
+Entering   : public_html/
+Entering   :     public_html/foo/
+Cannot change remote current working directory to `public_html/foo/'.
+---------------------------------------------------------------------
+
+A.2 You must specify SrcDir and DestDir in the configuration
+    file as the absolute path.
+    However you can specify other files/directories configurations
+    as the relative path.
+
+
+Q.3 Weex outputs `Cannot get remote directory list.' and stops.
+
+A.3 The FTP server may not support passive mode. If error returns when
+    connect it by a traditional FTP command and input `passive', it is so.
+    Set `FtpPassive' to `false' in `weexrc' to avoid this problem.
+    (It may make transfer slower)
+    Now I know `cindy.on FTP server (Version: 7.2)' and 
+    `Netscape SuiteSpot(tm)-Aware FTP Server - Version 1.2 (build 6)'
+    are such a kind of server.
+

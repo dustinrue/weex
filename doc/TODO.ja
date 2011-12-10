@@ -1,0 +1,73 @@
+◆するべき事柄(上にあるほど優先順位が高い)
+
+  ・キャッシュとローカルファイルを比べて、更新されたファイルが
+    どれだけあるかをまずチェックする。更新するファイルがなければ
+    接続しない。
+
+  ・双方向転送に対応 (これは Ver 3.0.0 で実装される予定です)。
+
+
+ドキュメントに*Remote* はリモートディレクトリを指定するようにかく
+
+
+"%s: The remote site needs updating (%d items to update).
+"%s: The remote site needs updating (1 item to update).
+"%s: The remote site does not need updating.
+
+-d をもっと見やすく
+
+例：
+
+Site: mysite
+        Server: my.server.com  Port: ftp
+        Protocol: FTP    Username: fred
+        Remote directory: ~/public_html/
+        Local directory: /home/fred/html/
+        Permissions: Ignored     Symlinks: Followed
+        Files will be moved remotely if moved locally.
+
+
+SrcDir がなければスキップするように
+
+sitecopy: Could not read directory for `mysite':
+        /home/fred/html/
+sitecopy: Skipping site `mysite'.
+
+
+lock 機構を Linux 標準に
+
+log を UNIX 標準なアレに
+
+
+
+gweex (GNOME版)
+kweex (KDE版)
+
+
+> In combination with -t, it dies because it can't cd into
+> remote directories because the remote site is still empty.
+
+Thanks. I will fix it. (To: weex doesn't rebuilt the cache with -t)
+
+
+> 2) A feature to specify a resource file and log/cache directory in the way
+
+
+
+> The ftp server runs on a Mac. It's dir list format is different from
+> unix ftp servers.
+
+
+> 4) Why don't you also supply the source rpms for download?
+
+
+> The program leaves temporary rubbish in ~/.weex/ after error exit.
+
+Current processing of temporary file and lock file is not Linux standard.
+I will fix them some day.
+
+
+
+
+README に ftp ポートを変更できるむねを記述する
+

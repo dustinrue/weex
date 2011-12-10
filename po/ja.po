@@ -1,0 +1,616 @@
+# Fast Webpage Exchanger
+# Copyright (C) 1999-2000 Yuuki NINOMIYA
+#
+# Japanese translations
+# Yuuki NINOMIYA <gm@debian.or.jp>, 1999-2000.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Fast Webpage Exchanger 2.5.3\n"
+"POT-Creation-Date: 2000-05-30 23:53+0900\n"
+"PO-Revision-Date: 2000-02-25 04:50+0900\n"
+"Last-Translator: Yuuki NINOMIYA <gm@debian.or.jp>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=euc-jp\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/cache.c:62
+#, c-format
+msgid "Rebuilding cache file `%s'.\n"
+msgstr "キャッシュファイル `%s' を再構築します。\n"
+
+#: src/cache.c:69
+#, c-format
+msgid "Cache file `%s' does not exist."
+msgstr "キャッシュファイル `%s' がありません。"
+
+#: src/cache.c:71
+msgid " Creating a new one.\n"
+msgstr "新しく作成します。\n"
+
+#: src/cache.c:83 src/cache.c:89
+#, c-format
+msgid "Cache file `%s' is broken at line %d.\n"
+msgstr "キャッシュファイル `%s' が %d 行目において破壊されています。\n"
+
+#: src/cache.c:200
+msgid "Internal error: cache facility is broken.\n"
+msgstr "内部エラー : キャッシュ機構が破壊されました。\n"
+
+#: src/cache.c:287
+#, c-format
+msgid "Cannot create cache file `%s'.\n"
+msgstr "キャッシュファイル `%s' を作成できません。\n"
+
+#: src/config.c:109
+#, c-format
+msgid "Configuration file `%s/.weex/weexrc' does not exist.\n"
+msgstr "設定ファイル `%s/.weex/weexrc' がありません。\n"
+
+#: src/config.c:115
+msgid "There is no section in configuration file.\n"
+msgstr "設定ファイルにセクションがありません。\n"
+
+#: src/config.c:140
+#, c-format
+msgid "Cannot make directory `%s'.\n"
+msgstr "ディレクトリ `%s' が作成できません。\n"
+
+#: src/config.c:143
+#, c-format
+msgid "Created directory `%s'.\n"
+msgstr "ディレクトリ `%s' を作成しました。\n"
+
+#: src/config.c:161
+#, c-format
+msgid "Cannot get file status: `%s'\n"
+msgstr "ファイル `%s' の情報が取得できません。\n"
+
+#: src/config.c:185
+msgid "A `default' section is required.\n"
+msgstr "セクション `default' が必要です。\n"
+
+#: src/config.c:241
+msgid ""
+"When you set ChangePermissionDir, you must configure ChangePermission.\n"
+msgstr ""
+"ChangePermissionDir を設定する時には ChangePermission "
+"も合わせて設定しなくてはなりません。\n"
+
+#: src/filedata.c:77
+#, c-format
+msgid "Cannot expand symbolic link `%s'. Ignore this file.\n"
+msgstr "シンボリックリンク `%s' を展開できません。このファイルを無視します。\n"
+
+#: src/filedata.c:78
+#, c-format
+msgid "Expanding symbolic link failed: %s"
+msgstr "シンボリックリンク展開失敗: %s"
+
+#: src/filedata.c:117
+#, c-format
+msgid "ConvToLower causes a conflict between `%s' and `%s'. Proceed anyway.\n"
+msgstr ""
+"ConvToLower が有効なので `%s' と `%s' が衝突します。とにかく継続します。\n"
+
+#: src/filedata.c:119
+#, c-format
+msgid "Confliction by ConvToLower: %s"
+msgstr "ConvToLower による衝突: %s"
+
+#: src/filedata.c:162
+msgid "Cannot create a unique file name.\n"
+msgstr "ユニークなファイル名を作成できません。\n"
+
+#: src/filedata.c:169
+msgid "Cannot get remote directory list.\n"
+msgstr "リモートディレクトリのリストが取得できません。\n"
+
+#: src/filedata.c:170
+msgid "Getting remote directory list failed"
+msgstr "リモートディレクトリリスト取得失敗"
+
+#: src/filedata.c:176
+#, c-format
+msgid "Cannot open `%s'.\n"
+msgstr "`%s' が開けません。\n"
+
+#: src/filedata.c:251
+#, c-format
+msgid "Cannot remove `%s'.\n"
+msgstr "`%s' を削除できません。\n"
+
+#: src/filedata.c:298 src/filedata.c:305 src/filedata.c:316
+msgid "Cannot get the remote directory list correctly.\n"
+msgstr "リモートディレクトリのリストが正しく取得できません。\n"
+
+#: src/ftplib.c:1179
+msgid "           : %ld/%ld (%ld%%) [ "
+msgstr "          : %ld/%ld (%ld%%) [ "
+
+#: src/ftpmain.c:74
+#, c-format
+msgid "Complete: sent %d file(s), removed %d file(s)"
+msgstr "完了: %d 個のファイルを転送, %d 個のファイルを削除"
+
+#: src/ftpmain.c:99
+#, c-format
+msgid "Specified host (section) name `%s' is undefined.\n"
+msgstr "指定されたホスト (セクション) 名 `%s' は定義されていません。\n"
+
+#: src/ftpmain.c:104
+#, c-format
+msgid "Specified host (section) number `%s' is undefined.\n"
+msgstr "指定されたホスト (セクション) 番号 `%s' は定義されていません。\n"
+
+#: src/ftpmain.c:109
+msgid "Cannot specify a default configuration.\n"
+msgstr "デフォルト設定を指定することはできません。\n"
+
+#: src/ftpmain.c:141
+msgid "The source directory (SrcDir) is not configured.\n"
+msgstr "ソースディレクトリ (SrcDir) が設定されていません。\n"
+
+#: src/ftpmain.c:148
+msgid "The destination directory (DestDir) is not configured.\n"
+msgstr "ディスティネーションディレクトリ (DestDir) が設定されていません。\n"
+
+#: src/ftpmain.c:187
+msgid "The host name is not configured.\n"
+msgstr "ホスト名が設定されていません。\n"
+
+#: src/ftpmain.c:191
+#, c-format
+msgid ""
+"Cannot connect host `%s'.\n"
+"\n"
+msgstr "ホスト `%s' に接続できません。\n"
+
+#: src/ftpmain.c:192
+#, c-format
+msgid "Connection failed: %s (%s)"
+msgstr "接続失敗: %s (%s)"
+
+#: src/ftpmain.c:197
+#, c-format
+msgid "Connected: %s (%s)"
+msgstr "接続: %s (%s)"
+
+#: src/ftpmain.c:224
+#, c-format
+msgid "Disconnected: %s (%s)"
+msgstr "切断: %s (%s)"
+
+#: src/ftpmain.c:241
+msgid "The login name is not configured.\n"
+msgstr "ログイン名が設定されていません。\n"
+
+#. Changed by Waleed Kadous <waleed@cse.unsw.edu.au> to ask
+#. for a password if none is given in the weexrc file
+#: src/ftpmain.c:247
+#, c-format
+msgid "No password specified in configuration file for `%s'. Asking ...\n"
+msgstr "ホスト `%s' にパスワードが設定されていません。指定してください ...\n"
+
+#: src/ftpmain.c:248
+msgid "Password:"
+msgstr "パスワード:"
+
+#: src/ftpmain.c:253
+msgid ""
+"Login failed. Check your ID and password.\n"
+"\n"
+msgstr ""
+"ログインに失敗しました。ID とパスワードを確認してください。\n"
+"\n"
+
+#: src/ftpmain.c:254
+#, c-format
+msgid "Login failed: %s (%s)"
+msgstr "ログイン失敗: %s (%s)"
+
+#: src/ftpmain.c:314
+#, c-format
+msgid "Cannot change %s current working directory to `%s'.\n"
+msgstr "%sカレントディレクトリを `%s' に変更できません。\n"
+
+#: src/ftpmain.c:314 src/ftpmain.c:315
+msgid "local"
+msgstr "ローカル"
+
+#: src/ftpmain.c:314 src/ftpmain.c:315
+msgid "remote"
+msgstr "リモート"
+
+#: src/ftpmain.c:315
+#, c-format
+msgid "Changing %s current working directory failed: %s"
+msgstr "%sカレントディレクトリ変更失敗: %s"
+
+#: src/ftpmain.c:411
+#, c-format
+msgid "Sent: %s%s"
+msgstr "転送: %s%s"
+
+#: src/ftpmain.c:430
+#, c-format
+msgid "Cannot change the access permissions of `%s%s' to `%s'.\n"
+msgstr "`%s%s' のアクセスパーミッションを `%s' に変更できません。\n"
+
+#: src/ftpmain.c:431
+#, c-format
+msgid "Changing the access permissions failed: %s%s"
+msgstr "アクセスパーミッション変更失敗: %s%s"
+
+#: src/ftpmain.c:440
+#, c-format
+msgid "Cannot send file `%s%s'.\n"
+msgstr "ファイル `%s%s' を転送できません。\n"
+
+#: src/ftpmain.c:441
+#, c-format
+msgid "Sending failed: %s%s"
+msgstr "転送失敗: %s%s"
+
+#: src/ftpmain.c:447
+#, c-format
+msgid "Retry to send: %s%s"
+msgstr "転送再試行: %s%s"
+
+#: src/ftpmain.c:450
+msgid "Retrying...\n"
+msgstr "再試行中...\n"
+
+#: src/ftpmain.c:469
+#, c-format
+msgid "%s : sent %d file(s), removed %d file(s)"
+msgstr "%s : %d 個のファイルを転送, %d 個のファイルを削除"
+
+#: src/ftpmain.c:613
+#, c-format
+msgid "Cannot remove remote file `%s%s'.\n"
+msgstr "リモートファイル `%s%s' を削除できません。\n"
+
+#: src/ftpmain.c:614
+#, c-format
+msgid "Removing failed: %s%s"
+msgstr "削除失敗: %s%s"
+
+#: src/ftpmain.c:619
+#, c-format
+msgid "Removed: %s%s"
+msgstr "削除: %s%s"
+
+#: src/ftpmain.c:681
+#, c-format
+msgid "Cannot remove remote directory `%s%s/'.\n"
+msgstr "リモートディレクトリ `%s%s/' を削除できません。\n"
+
+#: src/ftpmain.c:682
+#, c-format
+msgid "Removing failed: %s%s/"
+msgstr "削除失敗: %s%s/"
+
+#: src/ftpmain.c:709
+#, c-format
+msgid "Cannot make remote directory `%s%s/'.\n"
+msgstr "リモートディレクトリ `%s%s/' が作成できません。\n"
+
+#: src/ftpmain.c:710
+#, c-format
+msgid "Making directory failed: %s%s/"
+msgstr "ディレクトリ作成失敗: %s%s/"
+
+#: src/message.c:50
+msgid "Connect    : "
+msgstr "接続      : "
+
+#. CONNECT
+#: src/message.c:51
+msgid "Disconnect : "
+msgstr "切断      : "
+
+#. DISCONNECT
+#: src/message.c:52
+msgid "Entering   : "
+msgstr "Enter中   : "
+
+#. ENTER
+#: src/message.c:53
+msgid "Leaving    : "
+msgstr "Leave中   : "
+
+#. LEAVE
+#: src/message.c:54 src/message.c:55 src/message.c:59 src/message.c:60
+msgid "Sending    : "
+msgstr "転送中    : "
+
+#. BINARY_SEND
+#: src/message.c:56
+msgid "Changing   : "
+msgstr "MOD変更中 : "
+
+#. CHMOD
+#: src/message.c:57
+msgid "Removing   : "
+msgstr "削除中    : "
+
+#. REMOVE
+#: src/message.c:58
+msgid "Making Dir : "
+msgstr "Dir作成中 : "
+
+#. BINARY_LOWER_SEND
+#: src/message.c:61
+msgid "Processing : "
+msgstr "処理中    : "
+
+#: src/parsecfg.c:268
+#, c-format
+msgid "Configuration file `%s' is not found.\n"
+msgstr "設定ファイル `%s' が開けません。\n"
+
+#: src/parsecfg.c:271
+#, c-format
+msgid "Creating configuration file `%s' fails.\n"
+msgstr "設定ファイル `%s' を作成できません。\n"
+
+#: src/parsecfg.c:274
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Syntax error\n"
+msgstr ""
+"%s(%d): %s\n"
+"文法エラー\n"
+
+#: src/parsecfg.c:277
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Unrecognized parameter\n"
+msgstr ""
+"%s(%d): %s\n"
+"認識できないパラメータ\n"
+
+#: src/parsecfg.c:280
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Internal error\n"
+msgstr ""
+"%s(%d): %s\n"
+"内部エラー\n"
+
+#: src/parsecfg.c:283
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Invalid number\n"
+msgstr ""
+"%s(%d): %s\n"
+"無効な数字\n"
+
+#: src/parsecfg.c:286
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Out of range\n"
+msgstr ""
+"%s(%d): %s\n"
+"有効範囲を超過\n"
+
+#: src/parsecfg.c:289
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Cannot allocate memory.\n"
+msgstr ""
+"%s(%d): %s\n"
+"メモリが確保できません\n"
+
+#: src/parsecfg.c:292
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"It must be specified TRUE or FALSE.\n"
+msgstr ""
+"%s(%d): %s\n"
+"TRUE か FALSE で指定してください\n"
+
+#: src/parsecfg.c:295
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"The section name is already used.\n"
+msgstr ""
+"%s(%d): %s\n"
+"このセクション名は既に使われています\n"
+
+#: src/parsecfg.c:298
+#, c-format
+msgid ""
+"%s(%d)\n"
+"There is no closing brace.\n"
+msgstr ""
+
+#: src/parsecfg.c:301
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Unexplained error\n"
+msgstr ""
+"%s(%d): %s\n"
+"不明なエラー\n"
+
+#: src/shhopt.c:235 src/shhopt.c:261
+#, c-format
+msgid "invalid number `%s'\n"
+msgstr "`%s' は無効な数字です\n"
+
+#: src/shhopt.c:238 src/shhopt.c:264
+#, c-format
+msgid "number `%s' to `%s' out of range\n"
+msgstr "オプション `%2$s' に指定された数字 `%1$s' は有効範囲を越えています\n"
+
+#: src/shhopt.c:369
+#, c-format
+msgid "unrecognized option `%s'\n"
+msgstr "`%s' は認識できないオプションです\n"
+
+#: src/shhopt.c:382 src/shhopt.c:420
+#, c-format
+msgid "option `%s' requires an argument\n"
+msgstr "オプション `%s' は引数を必要とします\n"
+
+#: src/shhopt.c:388
+#, c-format
+msgid "option `%s' doesn't allow an argument\n"
+msgstr "オプション `%s' に引数は指定できません\n"
+
+#: src/shhopt.c:410
+#, c-format
+msgid "unrecognized option `-%c'\n"
+msgstr "`-%c' は認識できないオプションです\n"
+
+#: src/strlib.c:63 src/strlib.c:83
+msgid "Cannot allocate memory.\n"
+msgstr "メモリが確保できません。\n"
+
+#: src/sub.c:81
+#, c-format
+msgid "Invalid wildcard `%s'.\n"
+msgstr "`%s' は使用できないワイルドカードです。\n"
+
+#: src/weex.c:102 src/weex.c:141
+#, c-format
+msgid ""
+"Warning! Configuration file `%s/.weex/weexrc' does not exist.\n"
+"\n"
+msgstr ""
+"警告！ 設定ファイル `%s/.weex/weexrc' がありません。\n"
+"\n"
+
+#: src/weex.c:107
+#, c-format
+msgid ""
+"Fast Webpage Exchanger Ver %s Copyright (C) 1999-2000 Yuuki NINOMIYA\n"
+"\n"
+"This is free software with ABSOLUTELY NO WARRANTY.\n"
+"For details please see the file COPYING.\n"
+"\n"
+"usage: weex [OPTIONS] HOST...\n"
+"\n"
+"options:\n"
+"  -h | --help           display this help and exit\n"
+"  -s | --silent         suppress normal non-error messages\n"
+"  -f | --force          force sending all files\n"
+"  -m | --monochrome     output messages in monochrome\n"
+"  -t | --test           not modify remote files\n"
+"  -r | --rebuild-cache  rebuild cache file\n"
+"  -d | --debug-config   display configuration of each hosts\n"
+"  -D | --debug-ftplib   output debugging information for ftplib\n"
+"  -V | --version        display version information and exit\n"
+"\n"
+msgstr ""
+"Fast Webpage Exchanger Ver %s Copyright (C) 1999-2000 Yuuki NINOMIYA\n"
+"\n"
+"これはフリーソフトウェアであり、動作に一切の保証はありません。\n"
+"詳細は COPYING.ja を読んでください。\n"
+"\n"
+"使用法: weex [オプション] ホスト...\n"
+"\n"
+"オプション:\n"
+"  -h | --help           このヘルプを表示して終了\n"
+"  -s | --silent         エラーメッセージ以外を出力しない\n"
+"  -f | --force          全ファイルを強制的に転送\n"
+"  -m | --monochrome     メッセージをモノクロで出力\n"
+"  -r | --rebuild-cache  キャッシュファイルを再構築\n"
+"  -t | --test           リモートファイルを変更しない\n"
+"  -d | --debug-config   各ホストの設定を表示\n"
+"  -D | --debug-ftplib   ftplib のデバッグ情報を出力\n"
+"  -V | --version        バージョン情報を表示して終了\n"
+"\n"
+
+#: src/weex.c:146
+#, c-format
+msgid "Fast Webpage Exchanger Ver %s Copyright (C) 1999-2000 Yuuki NINOMIYA\n"
+msgstr ""
+
+#: src/log.c:56
+msgid "Cannot get a host name. Proceed anyway.\n"
+msgstr "ホスト名を取得できません。とにかく継続します。\n"
+
+#: src/log.c:84
+msgid "Stopped.\n"
+msgstr "停止。\n"
+
+#: src/log.c:88
+#, c-format
+msgid ""
+"Log file `%s' seems to be always locked.\n"
+"Remove lock file `%s'.\n"
+msgstr ""
+"ログファイル `%s' は常にロックされているように思えます。\n"
+"ロックファイル `%s' を削除してください。\n"
+
+#: src/log.c:90
+#, c-format
+msgid "Another weex is using log file `%s'. Just a moment.\n"
+msgstr ""
+"ログファイル `%s' は別の weex "
+"によって使われています。しばらくお待ちください。\n"
+
+#: src/log.c:146
+msgid "Jan"
+msgstr "01"
+
+#: src/log.c:147
+msgid "Feb"
+msgstr "02"
+
+#: src/log.c:148
+msgid "Mar"
+msgstr "03"
+
+#: src/log.c:149
+msgid "Apr"
+msgstr "04"
+
+#: src/log.c:150
+msgid "May"
+msgstr "05"
+
+#: src/log.c:151
+msgid "Jun"
+msgstr "06"
+
+#: src/log.c:152
+msgid "Jul"
+msgstr "07"
+
+#: src/log.c:153
+msgid "Aug"
+msgstr "08"
+
+#: src/log.c:154
+msgid "Sep"
+msgstr "09"
+
+#: src/log.c:155
+msgid "Oct"
+msgstr "10"
+
+#: src/log.c:156
+msgid "Nov"
+msgstr "11"
+
+#: src/log.c:157
+msgid "Dec"
+msgstr "12"
+
+#: src/log.c:165
+#, c-format
+msgid "%s %2d %02d:%02d:%02d %s weex[%d]: %s\n"
+msgstr "%s/%02d %02d:%02d:%02d %s weex[%d]: %s\n"

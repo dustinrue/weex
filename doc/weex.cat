@@ -1,0 +1,594 @@
+
+
+
+weex(1)                                                   weex(1)
+
+
+NNAAMMEE
+       weex - fast WEb EXchanger non-interactive FTP client
+
+
+
+SSYYNNOOPPSSIISS
+       wweeeexx [ Options ] _H_O_S_T_I_D _[_H_O_S_T_I_D_._._._]
+
+
+
+DDEESSCCRRIIPPTTIIOONN
+       wweeeexx  is  a  utility  designed  to  automate  the  task of
+       remotely maintaining a web page or other FTP archive. With
+       wweeeexx  ,  the maintainer of a web site or archive that must
+       be administered through FTP interaction can largely ignore
+       that  process.  The archive administrator simply creates a
+       local directory that serves as an exact model for the off-
+       site  data.  All  modifications  and direct interaction is
+       done locally to this directory structure. When the  admin-
+       istrator  wishes to coordinate the data on the remote site
+       with that of the local model directory,  simply  executing
+       wweeeexx  accomplishes  this  in  the most bandwidth-efficient
+       fashion by only transferring files that need updating. The
+       program  will create or remove (!) files or directories as
+       necessary to accurately establish the local model  on  the
+       remote server.
+
+       The  mandatory  _H_O_S_T_I_D  argument  is the user-defined name
+       that represents a particular FTP account or  configuration
+       specified  in  the _~_/_._w_e_e_x_r_c file. This file, the contents
+       of which are described below, can alternatively  be  named
+       _~_/_._w_e_e_x_/_w_e_e_x_r_c.   Multiple  _H_O_S_T_I_D  arguments  to a single
+       wweeeexx command are supported to affect multiple archives  or
+       configurations  in  immediate succession. In addition, the
+       actual _H_O_S_T_I_D can be substituted with  the  number  repre-
+       senting  its relative sequential position in the _~_/_._w_e_e_x_r_c
+       file (the first _H_O_S_T_I_D definition is 1, and so on).
+
+
+
+
+OOPPTTIIOONNSS
+       Options at the command line take precedence over any spec-
+       ified in the configuration file.
+
+       --dd,, ----ddeebbuugg--ccoonnffiigg
+              Outputs the configuration of each hosts.
+
+
+       --DD,, ----ddeebbuugg--ffttpplliibb
+              Outputs messages from/to FTP server.
+
+
+
+
+
+
+YN-cxe                      2000.05.22                          1
+
+
+
+
+
+weex(1)                                                   weex(1)
+
+
+       --ff,, ----ffoorrccee
+              If  the caching mechanism is inhibiting the upload-
+              ing of  files  that  should  be  transferred,  this
+              option  will  force  the  actual transfer to always
+              occur.
+
+
+       --hh,, ----hheellpp
+              Outputs a usage summary to _s_t_d_o_u_t.
+
+
+       --mm,, ----mmoonnoocchhrroommee
+              The default mode generates a helpful  color  coding
+              based on the operation being performed. This option
+              suppresses that.
+
+
+       --rr,, ----rreebbuuiilldd--ccaacchhee
+              If cache file is broken, use this to rebuild it.
+
+
+       --ss,, ----ssiilleenntt
+              The default mode outputs a helpful  status  message
+              for  each  action  taken,  including  file transfer
+              progress meters.  This mode suppresses output.
+
+
+       --tt,, ----tteesstt
+              Weex doesn't modify any remote files/directories.
+
+
+       --VV,, ----vveerrssiioonn
+              Prints the version of the wweeeexx program.
+
+
+CCOONNFFIIGGUURRAATTIIOONN FFIILLEE
+       Because this program is meant  to  be  non-interactive,  a
+       properly  set  up  configuration  file is essential.  wweeeexx
+       looks for this file either in _~_/_._w_e_e_x_r_c or _~_/_._w_e_e_x_/_w_e_e_x_r_c.
+
+       The  general  format of the configuration file is a brack-
+       eted section heading followed by  parameters  that  define
+       that section's configuration. This section name is what is
+       provided to wweeeexx at run time to indicate the FTP  arrange-
+       ment you wish to update. A parameter is only valid for the
+       most recent section heading that preceded it.  The  excep-
+       tion  to  this is the _[_d_e_f_a_u_l_t_] section which creates set-
+       tings for unspecified parameters in every section. In  the
+       case  of  parameters  that  accept  multiple  values,  the
+       default section augments any specifically designated  val-
+       ues.
+
+       Lines that begin with the '#' character are safely ignored
+       as  comments.   Neither  section   names   nor   parameter
+
+
+
+YN-cxe                      2000.05.22                          2
+
+
+
+
+
+weex(1)                                                   weex(1)
+
+
+       variables are case sensitive in any way. Section names can
+       not begin with numbers. Some parameters  can  be  assigned
+       multiple  values.  Where  this  is  not possible, the last
+       value is used. To quote  special  characters,  use  single
+       quotes  (')  or  double  quotes ("). To quote a particular
+       quote symbol, use the other quote. The general syntax for-
+       mat for the configuration file is:
+
+       [hostid1]
+               Parameter1 = Value
+               # First method for multiple values
+               Parameter2 = Value
+               Parameter2 = Value
+               ...
+
+       [hostid2]
+               Parameter1 = Value
+               # Second method for multiple values
+               Parameter2 = {
+                      Value
+                      Value
+               }
+               ...
+
+       [default]
+               Parameter = Value
+               ...
+
+
+       PPAARRAAMMEETTEERR LLIISSTT
+
+       These  parameters  are  used to define the properties of a
+       particular host  configuration  named  in  brackets.  When
+       specifying  directory names, the trailing "/" is optional.
+       Also, both files and directories (except SrcDir and  Dest-
+       Dir) can be specified with shell wildcards.  When specify-
+       ing files, if a file or file pattern is  given  without  a
+       path,  it  is  assumed to be available when encountered in
+       any directory.  If it is an explicitly specified path/file
+       combination, the configuration is available in that direc-
+       tory.  Files/directories except `SrcDir' and `DestDir' can
+       be  specified as both absolute path and relative path. But
+       you must specify `SrcDir' and `DestDir' as absolute  path.
+       When  you  want to specify `/public_html/ignoreme.html' as
+       relative path, you should specify `./ignoreme.html' rather
+       than  `ignoreme.html'.  When specifying binary states, you
+       may use any of the  following:  True/False,  Yes/No,  T/F,
+       1/0. None are case sensitive.
+
+
+       AAsscciiiiFFiillee
+              Filename  patterns  that  will be transferred using
+              ASCII mode. The default mode for files  not  speci-
+              fied in this way is IMAGE(BINARY) mode.
+
+
+
+YN-cxe                      2000.05.22                          3
+
+
+
+
+
+weex(1)                                                   weex(1)
+
+
+       CChhaannggeePPeerrmmiissssiioonn
+              The access permissions of the files in the directo-
+              ries specified with ChangePermissionDir are changed
+              to  this  parameter.  The  format  is a three digit
+              octal number.
+
+
+       CChhaannggeePPeerrmmiissssiioonnDDiirr
+              Files in directories  assigned  to  this  parameter
+              will  have  their  access permissions changed after
+              sending.  Specify local directories.
+
+
+       CChhddiirrAAttCCoonnnneeccttiioonn
+              Set `true' to change remote current working  direc-
+              tory  to  DestDir at connection.  If remote current
+              working directory at connection  is  DestDir,  weex
+              runs  faster  a  bit  by  setting this parameter to
+              `false'.  Default is `true'.
+
+
+       CCoonnvvTTooLLoowweerr
+              If set to `true', the filenames  are  converted  to
+              lower  case  before  sending.   This feature allows
+              interaction with FTP servers that  do  not  support
+              case  sensitive  filenames.  If  a  naming conflict
+              arises due to a lower case name  already  existing,
+              an  error occurs. Furthermore, the cache is totally
+              unaware of original uppercase filenames.
+
+
+       DDeessttDDiirr
+              Destination directory  on  the  remote  FTP  server
+              where  the  mirrored information will be sent. This
+              setting corresponds to the "pwd" command on  tradi-
+              tional FTP clients.
+
+
+       FFoorrccee  If  the caching mechanism is inhibiting the upload-
+              ing of  files  that  should  be  transferred,  this
+              option  will  force  the  actual transfer to always
+              occur if set to `true'.
+
+
+       FFoolllloowwSSyymmlliinnkkss
+              Set `true' to follow symbolic  links.   Default  is
+              `false'.  Symbolic link of directory assumes a file
+              whose size is 0 byte at default.
+
+
+       FFttppPPaassssiivvee
+              When it is `false', weex uses port mode instead  of
+              passive  mode.   If  the FTP server doesn't support
+              passive  mode,  specify  `false'.   (It  may   make
+
+
+
+YN-cxe                      2000.05.22                          4
+
+
+
+
+
+weex(1)                                                   weex(1)
+
+
+              transfer slower) Default is `true'.  (See also FAQ)
+
+
+       HHoossttNNaammee
+              Hostname to connect to. The "ftp://" protocol spec-
+              ifier  is  implied  and  shouldn't  be  used. An IP
+              address is also valid and may save lookup time.
+
+
+       IIggnnoorreeLLooccaallDDiirr
+              This parameter contains one or more protected local
+              directories  that are completely ignored during the
+              transfer process. This is useful  if  you  want  to
+              have  subdirectories that are part of a project but
+              don't need to  be  in  the  final,  online  version
+              (i.e., old versions).
+
+
+       IIggnnoorreeLLooccaallFFiillee
+              This parameter contains one or more protected local
+              file specifiers that  will  be  completely  ignored
+              during the transfer process.
+
+
+       IIggnnoorreeRReemmootteeDDiirr
+              This  parameter  contains  one  or  more  protected
+              remote directories that are completely ignored dur-
+              ing  the  transfer  process.  This is useful if you
+              want to have other material on the remote FTP  site
+              that  is  not  related to the specific project that
+              wweeeexx is dealing with. This could include, for exam-
+              ple,  data  administered  through  a  different FTP
+              client or process.
+
+
+       IIggnnoorreeRReemmootteeFFiillee
+              This  parameter  contains  one  or  more  protected
+              remote  file  specifiers  that  will  be completely
+              ignored during the transfer process.
+
+
+       KKeeeeppRReemmootteeDDiirr
+              In their directories, files are  not  removed  when
+              they don't exist in the local directory.
+
+
+       LLooggDDeettaaiillLLeevveell
+              It specifis how detail level weex records a log at.
+              Connection and disconnection message and error mes-
+              sages  are  always  recorded.   When  weex finishes
+              working correctly, it  writes  `Complete'  previous
+              disconnection  message.  If 1 or less, records each
+              connection.  If 2, records each directory.  If 3 or
+              more, records each file manipulated Default is 1.
+
+
+
+YN-cxe                      2000.05.22                          5
+
+
+
+
+
+weex(1)                                                   weex(1)
+
+
+       LLooggiinnNNaammee
+              Login name of the account on the FTP server.
+
+
+       MMaaxxRReettrryyTTooSSeenndd
+              When weex fails in sending a file, it retry to send
+              the file.  The maximum times of  retrying  is  this
+              parameter.  Default is 8. Specify -1 to stop retry-
+              ing.
+
+
+       MMoonnoocchhrroommee
+              The default mode generates a helpful  color  coding
+              based  on  the  operation being performed. A `true'
+              setting suppresses that.
+
+
+       NNeessttSSppaacceess
+              An integer that controls the indent spacing of  the
+              output.  The default is 4.  If you want to suppress
+              it, specify -1. If you specify 0, weex uses 4. :-)
+
+
+       OOvveerrwwrriitteeOOKK
+              If the FTP server has  trouble  overwriting  files,
+              set this parameter to `false'.
+
+
+       PPaasssswwoorrdd
+              Plaintext  password granting access to the account.
+              Note that this file uses no special  facilities  to
+              safeguard  passwords.  Make sure that the file per-
+              missions of a configuration file  containing  pass-
+              words  are  set  conservatively. If they are not, a
+              warning will  be  issued  at  execution.   If  this
+              parameter  is  not  found,  weex asks for it on the
+              terminal.
+
+
+       PPrreesseerrvveePPeerrmmiissssiioonnDDiirr
+              The access permissions of the files in  directories
+              assigned  to  this  parameter  will  be  copied  to
+              remote.  Specify *local* directories.
+
+
+       RReeccoorrddLLoogg
+              When `true', weex create a log.
+
+
+       SShhoowwHHiiddddeennFFiillee
+              Set `true' to get hidden  files  (starting  with  a
+              dot)  on FTP server which doesn't show hidden files
+              by default.  Default is `false'.
+
+
+
+
+YN-cxe                      2000.05.22                          6
+
+
+
+
+
+weex(1)                                                   weex(1)
+
+
+       SSiilleenntt The default mode outputs a helpful  status  message
+              for  each  action  taken,  including  file transfer
+              progress meters. A `true' setting  suppresses  out-
+              put.
+
+
+       SSrrccDDiirr Top  of  the  source  directory tree containing the
+              local copy of the information to be mirrored.  This
+              setting  corresponds to the "lcd" command on tradi-
+              tional FTP clients.
+
+
+
+EEXXAAMMPPLLEESS
+       Here is an example of what a typical  ..wweeeexxrrcc  file  might
+       look like:
+
+        #-=-=-=-=-=Sample Configuration file=-=-=-=-=-
+        # My favorite FTP account...
+        [Ninja]
+        HostName = ftp.ninja-rights.org
+        LoginName = chrisxed
+        Password = '"mYsEcReT!"'
+        SrcDir = /home/chrisxed/project/weex
+        DestDir = /
+        ASCIIfile = *.c
+        IgnoreLocalDir = /home/chrisxed/project/weex/weex.devel
+        IgnoreLocalDir = /home/chrisxed/project/weex/weex.old
+        IgnoreLocalFile = notes2myself.txt
+        IgnoreRemoteDir = /offsitearchive/
+
+        # Another FTP account...
+        [Veggie]
+        HostName = ftp.vegetable-advocacy.com
+        LoginNAME = waxedbean
+        Password = "X'sBean"
+        SrcDir = /home/chrisxed/project/legumes
+        DestDir = /souppot/
+
+        # Global configuration settings
+        [default]
+        AsciiFile = {
+        *.htm
+        *.html
+        *.txt
+        *.asc
+        }
+        IgnoreLocalFile = {
+        *.bak
+        *.tmp
+        *.swp
+        }
+
+       With a configuration like this, executing:
+
+
+
+YN-cxe                      2000.05.22                          7
+
+
+
+
+
+weex(1)                                                   weex(1)
+
+
+       $$ wweeeexx NNiinnjjaa
+
+       would  cause the file system assigned to SSrrccDDiirr to be com-
+       pletely mirrored on the remote server.  Executing:
+
+       $$ wweeeexx nniinnjjaa vveeggggiiee
+
+       would cause the FTP update to occur for the  "Ninja"  con-
+       figuration  and  then for the "Veggie" configuration. This
+       could also be specified like this:
+
+       $$ wweeeexx 11 22
+
+
+
+NNOOTTEESS
+       TTiimmeessttaammpp CCaacchhee FFaacciilliittyy
+
+       wweeeexx implements a cache of file timestamps from Ver 1.6.0.
+       This  makes  updating  much  faster when you have a lot of
+       files.  In addition, wweeeexx also caches directory  structure
+       and  file  names  from  Ver 2.5.0.  So never slow transfer
+       even if you have many directories and files.  If, however,
+       you  change  the  remote  files with another FTP client or
+       running wweeeexx is killed or wweeeexx is terminated by an  error,
+       the  cache  file will not be correct.  The simple solution
+       to this problem is to remove the cache  file  (located  in
+       _~_/_._w_e_e_x_/_w_e_e_x_._c_a_c_h_e_._H_O_S_T_N_A_M_E  )  completely  or to run wweeeexx
+       with option _-_-_r_e_b_u_i_l_d_-_c_a_c_h_e.
+
+
+
+       TTeesstteedd OOppeerraattiinngg SSyysstteemmss
+
+         Debian GNU/Linux 2.1
+         Red Hat Linux 5.1/5.2/6.0/6.1J
+         SuSE Linux 6.1/6.2/6.3
+         Linux Mandrake 6.1
+         FreeBSD(98) 3.0-RELEASE
+         FreeBSD 3.3-RELEASE
+         Solaris 2.5.1
+
+
+
+AAUUTTHHOORR
+       This very handy program was written by:
+              Yuuki NINOMIYA <gm@debian.or.jp>
+
+       The original man page was written by:
+              Chris _X Edwards <chrisxed@usa.net>
+
+       The copyright of this software and  documentation  belongs
+       to  Yuuki NINOMIYA.  It is released under the terms of the
+       GNU General  Public  License  as  published  by  the  Free
+
+
+
+YN-cxe                      2000.05.22                          8
+
+
+
+
+
+weex(1)                                                   weex(1)
+
+
+       Software Foundation; either version 2, or (at your option)
+       any later version.  You can redistribute it and/or  modify
+       it under the GPL.
+
+       This   software  uses  shhopt  for  parsing  command  line
+       options.  Shhopt is released under the  Artistic  License.
+       You may use it separately under the Artistic License.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+YN-cxe                      2000.05.22                          9
+
+

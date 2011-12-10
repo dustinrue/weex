@@ -1,0 +1,90 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:569: checking for a BSD compatible install
+configure:622: checking whether build environment is sane
+configure:679: checking whether make sets ${MAKE}
+configure:718: checking for working aclocal
+configure:731: checking for working autoconf
+configure:744: checking for working automake
+configure:757: checking for working autoheader
+configure:770: checking for working makeinfo
+configure:800: checking for gcc
+configure:913: checking whether the C compiler (gcc -D__unix__ ) works
+configure:929: gcc -o conftest -D__unix__   conftest.c  1>&5
+configure:955: checking whether the C compiler (gcc -D__unix__ ) is a cross-compiler
+configure:960: checking whether we are using GNU C
+configure:988: checking whether gcc accepts -g
+configure:1031: checking for a BSD compatible install
+configure:1086: checking how to run the C preprocessor
+configure:1168: checking for ranlib
+configure:1196: checking for POSIXized ISC
+configure:1217: checking for ANSI C header files
+configure:1321: checking for working const
+configure:1396: checking for inline
+configure:1436: checking for off_t
+configure:1469: checking for size_t
+configure:1504: checking for working alloca.h
+configure:1537: checking for alloca
+configure:1739: checking for unistd.h
+configure:1778: checking for getpagesize
+configure:1831: checking for working mmap
+configure:2010: checking for argz.h
+configure:2010: checking for limits.h
+configure:2010: checking for locale.h
+configure:2010: checking for nl_types.h
+configure:2010: checking for malloc.h
+configure:2010: checking for string.h
+configure:2010: checking for unistd.h
+configure:2010: checking for sys/param.h
+configure:2050: checking for getcwd
+configure:2050: checking for munmap
+configure:2050: checking for putenv
+configure:2050: checking for setenv
+configure:2050: checking for setlocale
+configure:2050: checking for strchr
+configure:2050: checking for strcasecmp
+configure:2050: checking for strdup
+configure:2050: checking for __argz_count
+configure:2050: checking for __argz_stringify
+configure:2050: checking for __argz_next
+configure:2169: checking for LC_MESSAGES
+configure:2202: checking whether NLS is requested
+configure:2222: checking whether included gettext is requested
+configure:2241: checking for libintl.h
+configure:2582: checking whether catgets can be used
+configure:2854: checking for msgfmt
+configure:2888: checking for gmsgfmt
+configure:2924: checking for xgettext
+configure:3017: checking for catalogs to be installed
+configure:3120: checking for gettext
+configure:3166: checking for gettext in -lintl
+configure:3219: checking for socket in -lsocket
+configure:3266: checking for gethostbyname in -lnsl
+configure:3319: checking for dirent.h that defines DIR
+configure:3357: checking for opendir in -ldir
+configure:3440: checking for ANSI C header files
+configure:3547: checking for limits.h
+configure:3547: checking for sys/time.h
+configure:3547: checking for unistd.h
+configure:3547: checking for gnuregex.h
+configure:3547: checking for regex.h
+configure:3585: checking for gnuregex.h
+configure:3620: checking for regex.h
+configure:3656: checking for working const
+configure:3731: checking for mode_t
+configure:3764: checking for off_t
+configure:3797: checking for size_t
+configure:3830: checking whether time.h and sys/time.h may both be included
+configure:3865: checking whether struct tm is in sys/time.h or time.h
+configure:3901: checking for vprintf
+configure:4008: checking for mkdir
+configure:4008: checking for regcomp
+configure:4008: checking for select
+configure:4008: checking for socket
+configure:4008: checking for strdup
+configure:4008: checking for strerror
+configure:4008: checking for strtol
+configure:4008: checking for strtoul
+configure:4071: checking whether to enable debug
+configure:4084: checking for inline

@@ -1,0 +1,622 @@
+# Fast Webpage Exchanger
+# Copyright (C) 1999-2000 Yuuki NINOMIYA
+#
+# French translations
+# Olivier Tharan <olive@minet.net>, 2000.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Fast Webpage Exchanger 2.6.1\n"
+"POT-Creation-Date: 2000-05-30 23:53+0900\n"
+"PO-Revision-Date: 2000-06-13 20:46+0900\n"
+"Last-Translator: Olivier Tharan <olive@minet.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/cache.c:62
+#, c-format
+msgid "Rebuilding cache file `%s'.\n"
+msgstr "Reconstruction du fichier de cache `%s'.\n"
+
+#: src/cache.c:69
+#, c-format
+msgid "Cache file `%s' does not exist."
+msgstr "Le fichier de cache `%s' n'existe pas."
+
+#: src/cache.c:71
+msgid " Creating a new one.\n"
+msgstr "Création d'un nouveau fichier.\n"
+
+#: src/cache.c:83 src/cache.c:89
+#, c-format
+msgid "Cache file `%s' is broken at line %d.\n"
+msgstr "Le fichier de cache a une erreur à la ligne %d.\n"
+
+#: src/cache.c:200
+msgid "Internal error: cache facility is broken.\n"
+msgstr "Erreur interne : la fonction de cache n'est pas disponible.\n"
+
+#: src/cache.c:287
+#, c-format
+msgid "Cannot create cache file `%s'.\n"
+msgstr "Création du fichier de cache `%s' impossible.\n"
+
+#: src/config.c:109
+#, c-format
+msgid "Configuration file `%s/.weex/weexrc' does not exist.\n"
+msgstr "Le fichier de configuration `%s/.weex/weexrc' n'existe pas.\n"
+
+#: src/config.c:115
+msgid "There is no section in configuration file.\n"
+msgstr "Il n'y a aucune section dans le fichier de configuration.\n"
+
+#: src/config.c:140
+#, c-format
+msgid "Cannot make directory `%s'.\n"
+msgstr "Création du répertoire `%s' impossible.\n"
+
+#: src/config.c:143
+#, c-format
+msgid "Created directory `%s'.\n"
+msgstr "Le répertoire `%s' a été créé.\n"
+
+#: src/config.c:161
+#, c-format
+msgid "Cannot get file status: `%s'\n"
+msgstr "Impossible de connaître l'état du fichier : `%s'\n"
+
+#: src/config.c:185
+msgid "A `default' section is required.\n"
+msgstr "Une section `default' est obligatoire.\n"
+
+#: src/config.c:241
+msgid ""
+"When you set ChangePermissionDir, you must configure ChangePermission.\n"
+msgstr ""
+"Quand vous positionnez ChangePermissionDir, vous devez configurer "
+"ChangePermission.\n"
+
+#: src/filedata.c:77
+#, c-format
+msgid "Cannot expand symbolic link `%s'. Ignore this file.\n"
+msgstr "Impossible de résoudre le lien symbolique `%s'. Fichier ignoré.\n"
+
+#: src/filedata.c:78
+#, c-format
+msgid "Expanding symbolic link failed: %s"
+msgstr "Échec de résolution du lien symbolique : %s"
+
+#: src/filedata.c:117
+#, c-format
+msgid "ConvToLower causes a conflict between `%s' and `%s'. Proceed anyway.\n"
+msgstr ""
+"ConvToLower engendre un conflit entre `%s' et `%s'. Je continue quand même.\n"
+
+#: src/filedata.c:119
+#, c-format
+msgid "Confliction by ConvToLower: %s"
+msgstr "Conflit sur ConvToLower : %s"
+
+#: src/filedata.c:162
+msgid "Cannot create a unique file name.\n"
+msgstr "Création d'un nom de fichier unique impossible.\n"
+
+#: src/filedata.c:169
+msgid "Cannot get remote directory list.\n"
+msgstr "Impossible d'obtenir le contenu du répertoire distant.\n"
+
+#: src/filedata.c:170
+msgid "Getting remote directory list failed"
+msgstr "Échec de l'obtention du contenu du répertoire distant"
+
+#: src/filedata.c:176
+#, c-format
+msgid "Cannot open `%s'.\n"
+msgstr "Impossible d'ouvrir `%s'.\n"
+
+#: src/filedata.c:251
+#, c-format
+msgid "Cannot remove `%s'.\n"
+msgstr "Impossible de supprimer `%s'.\n"
+
+#: src/filedata.c:298 src/filedata.c:305 src/filedata.c:316
+msgid "Cannot get the remote directory list correctly.\n"
+msgstr "Impossible d'obtenir le contenu correct du répertoire distant.\n"
+
+#: src/ftplib.c:1179
+msgid "           : %ld/%ld (%ld%%) [ "
+msgstr "           : %ld/%ld (%ld%%) [ "
+
+#: src/ftpmain.c:74
+#, c-format
+msgid "Complete: sent %d file(s), removed %d file(s)"
+msgstr "Terminé : envoyé %d fichier(s), supprimé %d fichier(s)"
+
+#: src/ftpmain.c:99
+#, c-format
+msgid "Specified host (section) name `%s' is undefined.\n"
+msgstr "La section pour l'hôte spécifié `%s' n'est pas définie.\n"
+
+#: src/ftpmain.c:104
+#, c-format
+msgid "Specified host (section) number `%s' is undefined.\n"
+msgstr "Le numéro de section pour l'hôte spécifié `%s' n'est défini.\n"
+
+#: src/ftpmain.c:109
+msgid "Cannot specify a default configuration.\n"
+msgstr "Il n'y a pas de configuration par défaut.\n"
+
+#: src/ftpmain.c:141
+msgid "The source directory (SrcDir) is not configured.\n"
+msgstr "Le répertoire source (SrcDir) n'est pas configuré.\n"
+
+#: src/ftpmain.c:148
+msgid "The destination directory (DestDir) is not configured.\n"
+msgstr "Le répertoire destination (DestDir) n'est pas configuré.\n"
+
+#: src/ftpmain.c:187
+msgid "The host name is not configured.\n"
+msgstr "Le nom de machine n'est pas configuré.\n"
+
+#: src/ftpmain.c:191
+#, c-format
+msgid ""
+"Cannot connect host `%s'.\n"
+"\n"
+msgstr ""
+"Impossible de se connecter à la machine `%s'.\n"
+"\n"
+
+#: src/ftpmain.c:192
+#, c-format
+msgid "Connection failed: %s (%s)"
+msgstr "Échec de la connexion : %s (%s)"
+
+#: src/ftpmain.c:197
+#, c-format
+msgid "Connected: %s (%s)"
+msgstr "Connecté : %s (%s)"
+
+#: src/ftpmain.c:224
+#, c-format
+msgid "Disconnected: %s (%s)"
+msgstr "Déconnecté : %s (%s)"
+
+#: src/ftpmain.c:241
+msgid "The login name is not configured.\n"
+msgstr "Le nom de login n'est pas configuré.\n"
+
+#. Changed by Waleed Kadous <waleed@cse.unsw.edu.au> to ask
+#. for a password if none is given in the weexrc file
+#: src/ftpmain.c:247
+#, c-format
+msgid "No password specified in configuration file for `%s'. Asking ...\n"
+msgstr ""
+"Pas de mot de passe pour `%s' dans le fichier de configuration. On demande "
+"...\n"
+
+#: src/ftpmain.c:248
+msgid "Password:"
+msgstr "Mot de passe :"
+
+#: src/ftpmain.c:253
+msgid ""
+"Login failed. Check your ID and password.\n"
+"\n"
+msgstr ""
+"Le login a échoué. Vérifiez votre identité et votre mot de passe.\n"
+"\n"
+
+#: src/ftpmain.c:254
+#, c-format
+msgid "Login failed: %s (%s)"
+msgstr "Le login a échoué : %s (%s)"
+
+#: src/ftpmain.c:314
+#, c-format
+msgid "Cannot change %s current working directory to `%s'.\n"
+msgstr "Impossible de passer du répertoire de travail en cours %s à `%s'.\n"
+
+#: src/ftpmain.c:314 src/ftpmain.c:315
+msgid "local"
+msgstr "local"
+
+#: src/ftpmain.c:314 src/ftpmain.c:315
+msgid "remote"
+msgstr "distant"
+
+#: src/ftpmain.c:315
+#, c-format
+msgid "Changing %s current working directory failed: %s"
+msgstr "Échec du changement du répertoire de travail courant %s : %s"
+
+#: src/ftpmain.c:411
+#, c-format
+msgid "Sent: %s%s"
+msgstr "Envoyé : %s%s"
+
+#: src/ftpmain.c:430
+#, c-format
+msgid "Cannot change the access permissions of `%s%s' to `%s'.\n"
+msgstr "Impossible de modifier les droits d'accèsde `%s%s' en `%s'.\n"
+
+#: src/ftpmain.c:431
+#, c-format
+msgid "Changing the access permissions failed: %s%s"
+msgstr "Échec du changement des droits d'accès : %s%s"
+
+#: src/ftpmain.c:440
+#, c-format
+msgid "Cannot send file `%s%s'.\n"
+msgstr "Impossible d'envoyer le fichier `%s%s'.\n"
+
+#: src/ftpmain.c:441
+#, c-format
+msgid "Sending failed: %s%s"
+msgstr "Échec de l'envoi : %s%s"
+
+#: src/ftpmain.c:447
+#, c-format
+msgid "Retry to send: %s%s"
+msgstr "Nouvelle tentative d'envoi : %s%s"
+
+#: src/ftpmain.c:450
+msgid "Retrying...\n"
+msgstr "Nouvelle tentative...\n"
+
+#: src/ftpmain.c:469
+#, c-format
+msgid "%s : sent %d file(s), removed %d file(s)"
+msgstr "%s : envoyé %d fichier(s), supprimé %d fichier(s)"
+
+#: src/ftpmain.c:613
+#, c-format
+msgid "Cannot remove remote file `%s%s'.\n"
+msgstr "Impossible de supprimer le fichier distant `%s%s'.\n"
+
+#: src/ftpmain.c:614
+#, c-format
+msgid "Removing failed: %s%s"
+msgstr "Échec de la suppression : %s%s"
+
+#: src/ftpmain.c:619
+#, c-format
+msgid "Removed: %s%s"
+msgstr "Supprimé : %s%s"
+
+#: src/ftpmain.c:681
+#, c-format
+msgid "Cannot remove remote directory `%s%s/'.\n"
+msgstr "Impossible de supprimer le répertoire distant `%s%s/'.\n"
+
+#: src/ftpmain.c:682
+#, c-format
+msgid "Removing failed: %s%s/"
+msgstr "Échec de la suppresion : %s%s/"
+
+#: src/ftpmain.c:709
+#, c-format
+msgid "Cannot make remote directory `%s%s/'.\n"
+msgstr "Impossible de créer le répertoire distant `%s%s/'.\n"
+
+#: src/ftpmain.c:710
+#, c-format
+msgid "Making directory failed: %s%s/"
+msgstr "Échec de création du répertoire : %s%s/"
+
+#: src/message.c:50
+msgid "Connect    : "
+msgstr "Connexion   :"
+
+#. CONNECT
+#: src/message.c:51
+msgid "Disconnect : "
+msgstr "Déconnexion :"
+
+#. DISCONNECT
+#: src/message.c:52
+msgid "Entering   : "
+msgstr "Entrée dans :"
+
+#. ENTER
+#: src/message.c:53
+msgid "Leaving    : "
+msgstr "Sortie de   :"
+
+#. LEAVE
+#: src/message.c:54 src/message.c:55 src/message.c:59 src/message.c:60
+msgid "Sending    : "
+msgstr "Envoi       :"
+
+#. BINARY_SEND
+#: src/message.c:56
+msgid "Changing   : "
+msgstr "Changement  :"
+
+#. CHMOD
+#: src/message.c:57
+msgid "Removing   : "
+msgstr "Suppression :"
+
+#. REMOVE
+#: src/message.c:58
+msgid "Making Dir : "
+msgstr "Création de :"
+
+#. BINARY_LOWER_SEND
+#: src/message.c:61
+msgid "Processing : "
+msgstr "Traitement  :"
+
+#: src/parsecfg.c:268
+#, c-format
+msgid "Configuration file `%s' is not found.\n"
+msgstr "Le fichier de configuration `%s' n'est pas trouvé.\n"
+
+#: src/parsecfg.c:271
+#, c-format
+msgid "Creating configuration file `%s' fails.\n"
+msgstr "Échec de création du fichier de configuration `%s'.\n"
+
+#: src/parsecfg.c:274
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Syntax error\n"
+msgstr ""
+"%s(%d) : %s\n"
+"Erreur de syntaxe\n"
+
+#: src/parsecfg.c:277
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Unrecognized parameter\n"
+msgstr ""
+"%s(%d) : %s\n"
+"Paramètre inconnu\n"
+
+#: src/parsecfg.c:280
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Internal error\n"
+msgstr ""
+"%s(%d) : %s\n"
+"Erreur interne\n"
+
+#: src/parsecfg.c:283
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Invalid number\n"
+msgstr ""
+"%s(%d) : %s\n"
+"Numéro invalide\n"
+
+#: src/parsecfg.c:286
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Out of range\n"
+msgstr ""
+"%s(%d) : %s\n"
+"Hors des limites\n"
+
+#: src/parsecfg.c:289
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Cannot allocate memory.\n"
+msgstr ""
+"%s(%d) : %s\n"
+"Impossible d'allouer de la mémoire.\n"
+
+#: src/parsecfg.c:292
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"It must be specified TRUE or FALSE.\n"
+msgstr ""
+"%s(%d) : %s\n"
+"Il faut spécifier TRUE ou FALSE.\n"
+
+#: src/parsecfg.c:295
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"The section name is already used.\n"
+msgstr ""
+"%s(%d) : %s\n"
+"Le nom de section est déjà utilisé.\n"
+
+#: src/parsecfg.c:298
+#, c-format
+msgid ""
+"%s(%d)\n"
+"There is no closing brace.\n"
+msgstr ""
+"%s(%d)\n"
+"Il n'y a pas de parenthèse fermante.\n"
+
+#: src/parsecfg.c:301
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Unexplained error\n"
+msgstr ""
+"%s(%d) : %s\n"
+"Erreur indéterminée\n"
+
+#: src/shhopt.c:235 src/shhopt.c:261
+#, c-format
+msgid "invalid number `%s'\n"
+msgstr "numéro `%s' invalide\n"
+
+#: src/shhopt.c:238 src/shhopt.c:264
+#, c-format
+msgid "number `%s' to `%s' out of range\n"
+msgstr "numéro `%s' vers `%s' hors des limites\n"
+
+#: src/shhopt.c:369
+#, c-format
+msgid "unrecognized option `%s'\n"
+msgstr "option `%s' non reconnue\n"
+
+#: src/shhopt.c:382 src/shhopt.c:420
+#, c-format
+msgid "option `%s' requires an argument\n"
+msgstr "l'option `%s' nécessite un paramètre\n"
+
+#: src/shhopt.c:388
+#, c-format
+msgid "option `%s' doesn't allow an argument\n"
+msgstr "l'option `%s' n'a pas de paramètre\n"
+
+#: src/shhopt.c:410
+#, c-format
+msgid "unrecognized option `-%c'\n"
+msgstr "option `-%c' inconnue\n"
+
+#: src/strlib.c:63 src/strlib.c:83
+msgid "Cannot allocate memory.\n"
+msgstr "Impossible d'allouer de la mémoire.\n"
+
+#: src/sub.c:81
+#, c-format
+msgid "Invalid wildcard `%s'.\n"
+msgstr "Motif d'expansion `%s' invalide.\n"
+
+#: src/weex.c:102 src/weex.c:141
+#, c-format
+msgid ""
+"Warning! Configuration file `%s/.weex/weexrc' does not exist.\n"
+"\n"
+msgstr ""
+"Attention ! Le fichier de configuration `%s/.weex/weexrc' n'existe pas.\n"
+"\n"
+
+#: src/weex.c:107
+#, c-format
+msgid ""
+"Fast Webpage Exchanger Ver %s Copyright (C) 1999-2000 Yuuki NINOMIYA\n"
+"\n"
+"This is free software with ABSOLUTELY NO WARRANTY.\n"
+"For details please see the file COPYING.\n"
+"\n"
+"usage: weex [OPTIONS] HOST...\n"
+"\n"
+"options:\n"
+"  -h | --help           display this help and exit\n"
+"  -s | --silent         suppress normal non-error messages\n"
+"  -f | --force          force sending all files\n"
+"  -m | --monochrome     output messages in monochrome\n"
+"  -t | --test           not modify remote files\n"
+"  -r | --rebuild-cache  rebuild cache file\n"
+"  -d | --debug-config   display configuration of each hosts\n"
+"  -D | --debug-ftplib   output debugging information for ftplib\n"
+"  -V | --version        display version information and exit\n"
+"\n"
+msgstr ""
+"Fast Webpage Exchanger Ver %s Copyright (C) 1999-2000 Yuuki NINOMIYA\n"
+"\n"
+"Voici un logiciel libre avec ABSOLUMENT AUCUNE GARANTIE.\n"
+"Pour les détails, référez-vous au fichier COPYING.\n"
+"\n"
+"utilisation : weex [OPTIONS] MACHINE...\n"
+"\n"
+"options :\n"
+"  -h | --help           affiche cette aide et termine\n"
+"  -s | --silent         ne montre que les messages d'erreur\n"
+"  -f | --force          force l'envoi de tous les fichiers\n"
+"  -m | --monochrome     affiche les messages en noir & blanc\n"
+"  -t | --test           ne modifie pas les fichiers distants\n"
+"  -r | --rebuild-cache  reconstruit le fichier de cache\n"
+"  -d | --debug-config   affiche la configuration de chaque hôte\n"
+"  -D | --debug-ftplib   affiche des informations de débogage pour ftplib\n"
+"  -V | --version        affiche des informations sur la version et termine\n"
+"\n"
+
+#: src/weex.c:146
+#, c-format
+msgid "Fast Webpage Exchanger Ver %s Copyright (C) 1999-2000 Yuuki NINOMIYA\n"
+msgstr "Fast Webpage Exchanger Ver %s Copyright (C) 1999-2000 Yuuki NINOMIYA\n"
+
+#: src/log.c:56
+msgid "Cannot get a host name. Proceed anyway.\n"
+msgstr "Impossible d'avoir un nom d'hôte. Je continue quand même.\n"
+
+#: src/log.c:84
+msgid "Stopped.\n"
+msgstr "Arrêté.\n"
+
+#: src/log.c:88
+#, c-format
+msgid ""
+"Log file `%s' seems to be always locked.\n"
+"Remove lock file `%s'.\n"
+msgstr ""
+"Le fichier de trace `%s' semble être constamment verrouillé.\n"
+"J'enlève le verrou `%s'.\n"
+
+#: src/log.c:90
+#, c-format
+msgid "Another weex is using log file `%s'. Just a moment.\n"
+msgstr ""
+"Une autre instance de weex utilise le fichier de trace `%s'. Attendez un "
+"instant.\n"
+
+#: src/log.c:146
+msgid "Jan"
+msgstr "Jan"
+
+#: src/log.c:147
+msgid "Feb"
+msgstr "Fév"
+
+#: src/log.c:148
+msgid "Mar"
+msgstr "Mar"
+
+#: src/log.c:149
+msgid "Apr"
+msgstr "Avr"
+
+#: src/log.c:150
+msgid "May"
+msgstr "Mai"
+
+#: src/log.c:151
+msgid "Jun"
+msgstr "Jun"
+
+#: src/log.c:152
+msgid "Jul"
+msgstr "Jui"
+
+#: src/log.c:153
+msgid "Aug"
+msgstr "Aoû"
+
+#: src/log.c:154
+msgid "Sep"
+msgstr "Sep"
+
+#: src/log.c:155
+msgid "Oct"
+msgstr "Oct"
+
+#: src/log.c:156
+msgid "Nov"
+msgstr "Nov"
+
+#: src/log.c:157
+msgid "Dec"
+msgstr "Déc"
+
+#: src/log.c:165
+#, c-format
+msgid "%s %2d %02d:%02d:%02d %s weex[%d]: %s\n"
+msgstr "%s %2d %02d:%02d:%02d %s weex[%d] : %s\n"
