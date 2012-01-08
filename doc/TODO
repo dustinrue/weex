@@ -1,7 +1,0 @@
-* TODO (in order of priority)
-
- + Before connecting, weex checks whether any local file
-   is actually changed. Weex connects only when the remote
-   site needs updating.
-
- + Support for bidirectional transfer (It will be supported from Ver 3.0.0).
