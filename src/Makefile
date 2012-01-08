@@ -105,7 +105,7 @@ ftpmain.o message.o cache.o sub.o filedata.o log.o
 weex_LDADD = $(LDADD)
 weex_DEPENDENCIES = 
 weex_LDFLAGS = 
-CFLAGS = -D__unix__ -Wall
+CFLAGS = -g -O2 -Wall
 COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
