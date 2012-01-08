@@ -1,0 +1,636 @@
+weex - web ページ更新用非対話型ミラーリングユーティリティ
+
+
+・概要
+
+weex は web ページを転送するための FTP クライアントであり、
+通常の対話型インタフェイスは持たず、あらかじめ用意しておいた
+設定ファイルの内容に基づいて動作する。
+
+転送方向は「ローカル→リモート (アップロード)」と
+「リモート→ローカル (ダウンロード)」の 2 種類をサポートする。
+
+
+
+・機能一覧
+
+転送するホストは複数を同時に指定できる。
+その場合は指定された順番に転送を行う。
+
+weex は同時に複数個動作できる。
+テンポラリファイルの名前には PID を利用する。
+
+タイムスタンプまたはファイルサイズを比較し、更新されている
+ファイルのみを転送する。どちらを使うか (あるいは両方) は
+weexrc で設定しておく。
+
+リモートファイルのリストはキャッシュファイルとしてローカルに
+保存しておき、アップロードの際にはそちらを利用することで、
+毎回リモートファイルのリストを取得することを防ぐ。
+
+gettext 対応。
+
+起動時に ~/.weex ディレクトリを調べ、もし存在しなかったら作成する。
+ただし起動オプション --no-mkdir-weex が指定されていたら作成しない。
+
+動作のログを記録する。
+
+
+
+
+
+
+
+
+
+
+
+・設定ファイル
+
+設定ファイルのパースには parsecfg の INI モードを用いる。
+
+セクション名を各ホストを識別するためのタグとする。
+ただし、セクション「default」だけは特別扱いとし、他のホストの
+設定において省略されている項目は、ホスト「default」のものを使用する。
+
+以下、各オプション
+
+HostName  接続するホスト名
+          使用する FTP ポートを変更する場合はホスト名の後ろに
+          コロンを置いてからポート番号を記述する - ftp.myhost.com:21
+          proxy 経由での接続については現在その方法を調査中である
+
+LoginName そのホストにログインするためのログイン名
+Password  そのホストにログインするためのパスワード
+
+LocalTopDir  転送の基準となるローカルディレクトリ
+RemoteTopDir 転送の基準となるリモートディレクトリ
+
+IgnoreLocalDir  存在しないとして処理するローカルディレクトリ
+IgnoreRemoteDir  存在しないとして処理するリモートディレクトリ
+IgnoreDir 存在しないとして処理するディレクトリ (ローカル/リモートの両方に有効)
+
+IgnoreLocalFile 存在しないとして処理するローカルファイル
+IgnoreRemoteFile 存在しないとして処理するリモートファイル
+IgnoreFile 存在しないとして処理するファイル (ローカル/リモートの両方に有効)
+
+KeepLocalDir  削除しないローカルディレクトリ
+KeepRemoteDir  削除しないリモートディレクトリ
+KeepDir  削除しないディレクトリ (ローカル/リモートの両方に有効)
+
+KeepLocalFile 削除しないローカルファイル
+KeepRemoteFile 削除しないリモートファイル
+KeepFile 削除しないファイル (ローカル/リモートの両方に有効)
+
+AsciiLocalDir  アスキーファイルとして転送するローカルディレクトリ
+AsciiRemoteDir  アスキーファイルとして転送するリモートディレクトリ
+AsciiDir  アスキーファイルとして転送するディレクトリ
+          (ローカル/リモートの両方に有効)
+
+AsciiLocalFile アスキーファイルとして転送するローカルファイル
+AsciiRemoteFile アスキーファイルとして転送するリモートファイル
+AsciiFile アスキーファイルとして転送するファイル
+          (ローカル/リモートの両方に有効)
+
+PreservePermissionLocalDir  パーミッションを維持するローカルディレクトリ
+PreservePermissionRemoteDir  パーミッションを維持するリモートディレクトリ
+PreservePermissionDir  パーミッションを維持するディレクトリ
+                       (ローカル/リモートの両方に有効)
+
+PreservePermissionLocalFile パーミッションを維持するローカルファイル
+PreservePermissionRemoteFile パーミッションを維持するリモートファイル
+PreservePermissionFile パーミッションを維持するファイル
+                       (ローカル/リモートの両方に有効)
+
+ChangePermissionLocalDir   パーミッションを指定したものに変更する
+                           ローカルディレクトリ
+ChangePermissionRemoteDir   パーミッションを指定したものに変更する
+                            リモートディレクトリ
+ChangePermissionDir   パーミッションを指定したものに変更するディレクトリ
+                      (ローカル/リモートの両方に有効)
+
+ChangePermissionLocalFile パーミッションを指定したものに変更する
+                          ローカルファイル
+ChangePermissionRemoteFile パーミッションを指定したものに変更する
+                          リモートファイル
+ChangePermissionFile パーミッションを指定したものに変更するファイル
+                     (ローカル/リモートの両方に有効)
+
+パーミッションは以下のように指定する
+
+ChangePermissionLocalDir = {
+	444:/home/hoge/wwwroot/html
+	555:/home/hoge/wwwroot/cgi
+}
+
+ChangePermissionOnMkdir = { MKDIR するときのアクセスパーミッション
+	666:/home/hoge/*
+}
+
+CacheFile  リモートファイルのリストを格納したキャッシュファイルの名前
+           ${name} はセクション名に展開される。default セクションに
+           記述した場合は、必ず ${name} を含んでいなければならない。
+           name は case non-sensitive
+
+RecordLog ログ (実行記録) を作成するかどうか
+LogFile ログを書き込むファイルの名前
+LogDetailLevel ログをどれくらい詳しく記録するかを指定する
+
+1 以下 ... 各接続毎にいくつファイルを転送/削除したかを記録
+2 ........ さらに各ディレクトリ毎の転送/削除数も記録
+3 以上 ... さらに転送/削除を行った各ファイルの名前も記録
+
+NestSpaces 1 つ下位のディレクトリに入った時に、いくつ表示を右にずらすか。
+MaxRetryToSend ファイルの転送に失敗した場合、この回数だけ再試行を行います
+
+ConvToLower ファイルを小文字に変換してから転送するかどうか
+OverwriteOK ファイルを上書きする際に、そのファイルを一旦削除してから
+            転送するかどうか
+
+Silent エラーメッセージ以外の出力を抑制
+       (SuppressNonErrorMessages と同じ)
+SuppressProgress ファイル転送の進捗情報を表示しない
+SuppressNonErrorMessages エラーメッセージ以外の出力を抑制
+SuppressAllMessages 全てのメッセージを表示しない
+
+ExitOnMinorError 継続可能なエラーが発生しても処理を中断する
+
+Monochrome エスケープシーケンスを用いたカラー表示ではなく
+           白黒でメッセージを出力します
+Force タイムスタンプに関係なく全ファイルを無条件で転送します
+FtpPassive PASV モードでアクセスするかどうか
+ShowHiddenFiles 普通に ls しただけでは隠しファイル (ドットで始まるファイル)
+                が表示されない FTP サーバで隠しファイルを認識できるように
+                するかどうか
+FollowSymlinks  ローカルディレクトリのシンボリックリンクを展開します
+
+DefaultTransferDirection 転送方向指定のオプションを付けなかったときの転送方向
+"upload" or "download"
+case non-sensitive
+default -> upload
+
+DetectingModificationMethod ファイル変更を検出する方法
+"time" 時間のみ
+"size" ファイルサイズのみ (時間をうまく取得できないサーバ用)
+"timesize" 時間かサイズ (デフォルト)
+
+CacheFacility キャッシュ機構を使うかどうか
+
+AccessMethod リモートファイルへのアクセス方法
+"ftp" FTP
+"rsync" rsync+ssh
+"scp" scp+ssh
+
+
+・起動オプション
+
+-a | --all-hosts       定義されている全てのホストに対して転送を行う
+-c | --config-file=FILE 指定された設定ファイルを使う
+-s | --silent         エラーメッセージ以外を出力しない
+-q | --quiet          エラーメッセージ以外を出力しない
+-Q | --Quiet          エラーメッセージも含め一切メッセージを出力しない
+-p | --suppress-progress 進捗情報を表示しない
+
+-f | --force          更新されているされていないにかかわらず、
+                      全ファイルを強制的に転送
+-m | --monochrome     メッセージをモノクロで出力
+-r | --rebuild-cache  キャッシュファイルを再構築
+
+-n | --not-mkdir-weex 起動時に ~/.weex ディレクトリを作成しない
+
+-C | --confirmation   request confirmation when modify files/directories
+-t | --test           実際には転送を行わない
+-l | --list           転送されるファイルの一覧を表示
+
+-d | --download       リモートからローカルへ転送
+-u | --upload         ローカルからリモートへ転送
+
+-D | --debug          デバッグ情報を出力
+-h | --help           このヘルプを表示して終了
+-V | --version        バージョン情報を表示して終了
+
+-v | --view           各ホストの設定を表示
+
+
+weex 3.0.0
+Copyright (C) 1999-2000 Yuuki NINOMIYA <gm@debian.or.jp>
+This program comes with ABSOLUTELY NO WARRANTY, to the extent permitted by law.
+You may redistribute it under the terms of the GNU General Public License.
+For more information about these matters, see the file named COPYING.
+
+weex 3.0.0
+Copyright (C) 1999-2000 Yuuki NINOMIYA <gm@debian.or.jp>
+このプログラムには、法律的にも一切の保証はありません。
+あなたは GNU 一般公有使用許諾書の文言の下において、これを再配布することが
+できます。これらの事柄に関する詳細は COPYING.ja に記されています。
+
+
+
+転送前に全転送バイトを表示
+
+進捗表示として転送率と終了予定時刻
+
+致命的エラーが発生すると、~/.weex/bugreport を作成するように
+bugreport : uname -a と デバッグ情報
+
+
+・主要なデータ構造
+
+* キャッシュデータ
+
+構造体配列 -+-- ディレクトリ名
+            +-- そのディレクトリの中に存在するファイル (ディレクトリ含む) 数
+            +-- ファイル一覧構造体へのポインタ
+                    |
+                    +--> +-- ファイル (ディレクトリ) 名
+                         +-- 最終更新日付
+                         +-- 最終更新時刻
+                         +-- ファイルサイズ
+
+
+
+・処理の流れ
+
+* main
+
+gettext の準備。
+
+コマンドラインオプションをパース。
+
+~/.weex ディレクトリを調べ、もし存在しなかったら作成する。
+ただし起動オプション --no-mkdir-weex が指定されていたら作成しない。
+
+--help が指定されていたらヘルプを表示して終了。
+
+--version が指定されていたらバージョン情報を表示して終了。
+
+--debug が指定されていたら ftplib_debug を 3 にセット。
+
+weexrc を読み込んでパースする (weexrc 読み込みサブシステム)。
+ただし --config-file が指定されていたらそのファイルを読み込む
+サブシステムがエラーを返せば終了。
+ただし「weexrc が存在しない」というエラーの場合は weex 設定ウィザード
+サブシステムを実行。
+
+--view が指定されていたら各ホストの設定を整形して表示。
+
+メインループへ
+ただしホストが指定されていなければヘルプを表示して終了。
+
+
+* メインループ
+
+ftplib を初期化。
+
+転送すべきホストの番号 (名前で指定されていたら番号に変換) を
+コマンドラインから読み込んで配列に格納。
+--all-hosts が指定されていたら、コマンドラインで指定されているホストは
+無視して、全ホストの番号を順に配列に格納。
+
+上記で準備した配列の順番に従ってホストを処理する。
+
+キャッシュを読み込む。
+キャッシュファイルが存在しない、あるいは --rebuild-cache が指定されていたら
+キャッシュを再構築する (キャッシュ再構築サブシステム)。
+(CacheFacility が無効の時でも同様に再構築を行う。ただしメッセージは
+出力せず、ファイルにも書き出さない)
+
+ローカルファイルのリスト (リモートキャッシュと同じデータ構造) を生成
+(ローカルファイルリスト構築サブシステム)。
+
+転送 (削除) されるファイルを調査する (転送ファイル調査サブシステム)。
+実際の転送等はここで作られるデータに基いて行われる。
+
+転送!
+
+
+
+* キャッシュ再構築サブシステム
+
+ホストに接続。
+
+(グローバル変数で処理中のリモート/ローカルディレクトリを
+記憶しておく。全てのファイル操作はこれに基いて実行する。実際に cd で
+cwd を変更することはしない。)
+
+A:
+リモートディレクトリのファイル一覧を取得してパース
+(リモートファイルリスト取得サブシステム)。
+
+取得したファイル一覧の中にディレクトリがあれば、カレントリモートディレクトリを
+そのディレクトリに変更して、A を再帰呼び出し。
+
+現在の処理中ディレクトリをスキャンできたら、それをキャッシュに追加。
+
+
+* リモートファイルリスト取得サブシステム
+
+ファイルを先頭に、ディレクトリを後ろに並び換える。
+
+
+* ローカルファイルリスト構築サブシステム
+
+ファイルを先頭に、ディレクトリを後ろに並び換える。
+
+
+* 転送ファイル調査サブシステム
+
+最終的なデータ
+send: /hoge/tara/hoge.html
+send: /fuga/hoge/tara.html
+remove: /aho/baka.html
+mkdir: /neko
+rmdir: /kasu
+
+
+* weexrc 読み込みサブシステム
+
+
+
+* weex 設定ウィザードサブシステム
+
+Welcome to weex configuration wizard!\n
+You can configure weex by just answering some questions with this wizard.\n
+If you want to write weexrc file by hand or just you specified wrong\n
+configuration file, kill the process by Ctrl-C.\n\n
+
+1) configure new host\n
+2) reconfigure existing host\n
+3) display current configuration\n
+4) write weexrc and exit\n\n
+
+
+* 処理メッセージ表示サブシステム
+
+--silent または --quiet または --Quiet が指定されていたらそのまま終了。
+Silent または SuppressNonErrorMessages または SuppressAllMessages が
+true なら終了。
+
+--monochrome が指定されている、または Monochrome が true なら
+モノクロで、そうでなければ ANSI エスケープシーケンスを用いて
+メッセージを表示。
+
+
+
+
+
+
+・見た目
+
+% weex 1 2 3
+処理中    : deodeo
+Cache file is not found.
+Creating a new one.
+接続      : www.enjoy.ne.jp
+Enter中   : /public_html/
+Enter中   :     /public_html/diary/
+Leave中   :     /public_html/diary/
+Enter中   :     /public_html/nikki/
+Leave中   :     /public_html/nikki/
+Leave中   : /public_html/
+
+3 files need sending.
+Enter中   : /public_html/
+Enter中   :     /public_html/diary/
+転送中    :         hogehoge.html
+転送中    :         fugafuga.html
+Leave中   :     /public_html/diary/
+Enter中   :     /public_html/nikki/
+転送中    :         mukyu.html
+Leave中   :     /public_html/nikki/
+Leave中   : /public_html/
+切断      : www.enjoy.ne.jp
+
+処理中    : ftp.hoge.com
+1 file needs sending.
+接続      : ftp.hoge.com
+Enter中   : /public_html/
+Enter中   :     /public_html/diary/
+Leave中   :     /public_html/diary/
+Enter中   :     /public_html/nikki/
+転送中    :         mukyu.html
+Leave中   :     /public_html/nikki/
+Leave中   : /public_html/
+切断      : ftp.hoge.com
+
+処理中    : ftp.fuga.com
+No file needs sending.
+
+
+% weex --list 1 2 3 4
+処理中    : deodeo
+Cache file is not found.
+Creating a new one.
+接続      : www.enjoy.ne.jp
+Enter中   : /public_html/
+Enter中   :     /public_html/diary/
+Leave中   :     /public_html/diary/
+Enter中   :     /public_html/nikki/
+Leave中   :     /public_html/nikki/
+Leave中   : /public_html/
+
+3 files need sending.
+/public_html/diary/hogehoge.html
+/public_html/diary/fugafuga.html
+/public_html/nikki/mukyu.html
+
+処理中    : ftp.hoge.com
+1 file needs sending.
+/public_html/nikki/mukyu.html
+
+処理中    : ftp.fuga.com
+No file needs sending.
+
+処理中    : baka.com
+1 file needs removing.
+/hoge/fuga.html
+
+1 directory need removing.
+/baka
+
+1 directory need creating.
+/mukyu
+
+1 file needs sending.
+/fuga.html
+
+
+% weex --download 1
+処理中    : deodeo
+Rebuilding cache for downloading.
+接続      : www.enjoy.ne.jp
+Enter中   : /public_html/
+Enter中   :     /public_html/diary/
+Leave中   :     /public_html/diary/
+Enter中   :     /public_html/nikki/
+Leave中   :     /public_html/nikki/
+Leave中   : /public_html/
+
+3 files need receiving.
+Enter中   : /home/gm/
+Enter中   :     /home/gm/diary/
+受信中    :         hogehoge.html
+受信中    :         fugafuga.html
+Leave中   :     /home/gm/diary/
+Enter中   :     /home/gm/nikki/
+受信中    :         mukyu.html
+Leave中   :     /home/gm/nikki/
+Leave中   : /home/gm/
+切断      : www.enjoy.ne.jp
+
+
+リモートファイルの日付がローカルに等しいと仮定して
+キャッシュを再構築する機能
+
+接続メソッドはモジュール化する
+ftp or scp or rsync
+
+scp gm@gm0:/etc/passwd .
+ssh gm@gm0 ls -la 
+
+使うオプションを自動認識するオプション
+
+fnmatch()
+
+ls --full-time
+
+
+
+
+ > (現状)                          (提案)
+ > 0を指定するとデフォルト値(8) → 0を指定すると再試行しない(つまり0回)。
+ > 負数だと再試行しない         → 負数の場合(または定義されていない場合)
+ >                                 はデフォルト値(8)
+
+ 0をしていると再試行しない(つまり０回)
+ 正数の場合、その数だけ再試行
+ 負数のだと、再試行し続ける(永遠に繰り返す)
+ 定義されていない場合は、０か８、どちらでもいいと思います。
+
+ の方が自然だと思いますが。
+
+
+ しかし、永遠に繰り返すのも、問題があるでしょうから、
+ 負数の場合は、いままでどおり、０回でいいんじゃないでしょうか？
+ そして、定義されていない場合は、８回にすれば、
+ ０を指定している時だけ、互換性がなくなるけど、０以外は互換性ものこります。
+
+
+
+
+
+
+220 gm1 FTP server (Version 6.4/OpenBSD/Linux-ftpd-0.17) ready.
+total 304
+drwxr-sr-x   10 gm       gm           4096 12月 19 15:52 ./
+drwxr-sr-x   31 gm       gm          32768 12月 20 06:37 ../
+-rw-rw-r--    1 gm       gm             10 11月  7 15:43 .cvsignore
+drwxr-x---    2 gm       gm           4096 12月 19 15:53 CVS/
+drwxr-x---    3 gm       gm           4096 12月  5 22:57 diary/
+drwxr-x---    3 gm       gm           4096 12月  6 12:51 graphics/
+-rw-r-----    1 gm       gm           4029 11月  7 19:02 hajimeni-ja.html
+-rw-r-----    1 gm       gm           2959 11月  3 03:21 hajimeni.html
+-rw-rw-r--    1 gm       gm           2743 12月 19 15:52 index-ja.html
+-rw-rw-r--    1 gm       gm           1715 12月 19 15:52 index.html
+-rw-r-----    1 gm       gm           2131 11月  3 03:21 kijun.html
+-rw-r-----    1 gm       gm          20706 11月  3 03:21 link.html
+drwxr-x---    8 gm       gm           4096 11月  3 03:21 linux/
+-rwxr-x--x    1 gm       gm            112 11月  3 03:21 make_archive.sh*
+drwxr-x---    3 gm       gm           4096 11月 12 00:24 nikki/
+drwxr-x---   10 gm       gm           4096 12月 19 15:53 program/
+-rw-r-----    1 gm       gm           3621 12月  6 03:55 sitemap-ja.html
+-rw-r-----    1 gm       gm           1247 11月  3 03:21 sitemap.html
+drwxr-x---    3 gm       gm           4096 11月  3 03:21 softarc/
+drwxr-x---    3 gm       gm           4096 11月  3 03:21 translate/
+226 Transfer complete.
+
+220 www FTP server ready.
+total 172
+drwxr-xr-x   6 11071        1536 Dec  6 03:57 .
+drwx--x--x   7 11071         512 Dec 28  1999 ..
+drwxr-xr-x   2 11071         512 Dec  5 22:58 diary
+-rw-r--r--   1 11071        4029 Nov  7 19:02 hajimeni-ja.html
+-rw-r--r--   1 11071        2959 Nov  7 15:51 hajimeni.html
+-rw-r--r--   1 11071        2743 Dec 19 15:53 index-ja.html
+-rw-r--r--   1 11071        1715 Dec 19 15:53 index.html
+-rw-r--r--   1 11071        2131 Nov  7 15:51 kijun.html
+-rw-r--r--   1 11071       20706 Nov  7 15:51 link.html
+-rw-r--r--   1 11071         112 Nov  7 15:51 make_archive.sh
+drwxr-xr-x   2 11071        2560 Aug  3 05:23 nikki
+drwxr-xr-x   9 11071         512 Oct 29 01:40 program
+-rw-r--r--   1 11071        3621 Dec  6 03:57 sitemap-ja.html
+-rw-r--r--   1 11071        1247 Nov  7 15:58 sitemap.html
+drwxr-xr-x   2 11071         512 Oct 16  1999 translate
+226 Transfer complete.
+
+220 www13 FTP server (Version wu-2.4 modified by Vector Co. Fri Dec 1 16:15:34 JST 2000) ready.
+total 476
+drwxr-sr-x   6 hp       web         1536 Dec  5 18:57 .
+drwxrwsr-x 3311 root     web        68096 Dec 18 11:27 ..
+drwxrwsr-x   2 hp       web          512 Dec  5 13:58 diary
+-rw-rw-r--   1 hp       web         4029 Nov  7 10:02 hajimeni-ja.html
+-rw-rw-r--   1 hp       web         2959 Nov  7 07:00 hajimeni.html
+-rw-rw-r--   1 hp       web         2743 Dec 19 06:52 index-ja.html
+-rw-rw-r--   1 hp       web         1715 Dec 19 06:52 index.html
+-rw-rw-r--   1 hp       web         2131 Nov  7 07:00 kijun.html
+-rw-rw-r--   1 hp       web        20706 Nov  7 07:00 link.html
+-rw-rw-r--   1 hp       web          112 Nov  7 07:00 make_archive.sh
+drwxrwsr-x   2 hp       web         2560 Aug  2 20:23 nikki
+drwxrwsr-x   9 hp       web          512 Oct 28 16:40 program
+-rw-rw-r--   1 hp       web         3621 Dec  5 18:57 sitemap-ja.html
+-rw-rw-r--   1 hp       web         1247 Nov  7 07:08 sitemap.html
+drwxrwsr-x   2 hp       web          512 Dec  8  1999 translate
+226 Transfer complete.
+
+220 web-server Microsoft FTP Service (Version 4.0).
+05-25-99  10:50PM                22703 001.jpg
+11-25-99  01:30AM                 2318 anfahrtswege.html
+11-25-99  01:30AM                   87 col.html
+05-25-99  10:51PM                31111 contruction.gif
+11-25-99  01:30AM                 2269 freizeit.html
+11-25-99  01:30AM                 2197 gastronom.html
+11-25-99  01:30AM                 2589 geniesser.html
+11-25-99  01:30AM                 2716 gesundheit.html
+11-25-99  01:30AM                 4188 haupt_menu.html
+08-04-99  04:05PM                23669 hgr.jpg
+11-25-99  01:30AM                 2395 hotelbar.html
+11-22-99  11:32PM       <DIR>          icon
+11-25-99  01:32AM       <DIR>          image
+11-25-99  01:30AM                 2577 index.html
+11-02-99  01:34PM                 4310 index.html.bck
+226 Transfer complete.
+
+-rwx------        3110        0     3110 Apr 16 13:44 about.html
+-rwx------        2529        0     2529 Apr 16 13:44 committee.html
+drwx------             folder         13 Apr 11 15:47 events
+drwx------             folder          6 Apr 11 15:12 help
+-rwx------        4917        0     4917 Apr 16 13:44 help.html
+-rwx------        3353        0     3353 Apr 16 13:44 index.html
+drwx------             folder          3 Apr 11 15:12 minutes
+-rwx------        2867        0     2867 Apr 16 13:44 news.html
+-rwx------        6304        0     6304 Apr 11 15:36 photosocmembership.html
+-rwx------        1799        0     1799 Apr 16 13:44 rally.html
+-rwx------        1688        0     1688 Apr 16 13:44 supplies.html
+226 Transfer complete.
+
+
+The sizes in the right column are multiples of 128 here:
+
+-rwx------        3792        0     3968 May 23 13:16 about.html
+-rwx------        3611        0     3840 May 23 13:16 contact.html
+drwx------             folder         13 Apr 11 15:47 events
+-rwx------        1448        0     1664 May 23 13:16 events.html
+drwx------             folder          6 Apr 11 15:12 help
+-rwx------        5351        0     5504 May 23 13:15 help.html
+drwx------             folder          3 May 23 13:16 images
+-rwx------        3621        0     3840 May 23 13:16 index.html
+-rwx------        7433        0     7680 May 23 13:16 join.html
+-rwx------        7425        0     7680 May 23 13:16 join_.html
+-rwx------         874        0     1024 May 23 13:16 map.html
+drwx------             folder          3 Apr 11 15:12 minutes
+-rwx------        3214        0     3456 May 23 13:16 news.html
+drwx------             folder         12 May 23 13:16 photos
+-rwx------        6304        0     6528 Apr 11 15:36 photosocmembership.html
+-rwx------        1799        0     2048 May 23 13:16 rally.html
+-rwx------        2131        0     2304 May 23 13:16 supplies.html
+226 Transfer complete.

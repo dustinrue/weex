@@ -1,0 +1,130 @@
+#-------------------------------------------#
+# Fast Webpage Exchanger Configuration File #
+#-------------------------------------------#
+
+# the configuration of 1st host
+[deodeo]
+HostName	= www.enjoy.ne.jp
+LoginName	= gm
+Password	= gmkun
+SrcDir		= /mnt/gm1/data/file/gms_page
+DestDir		= /public_html
+IgnoreLocalDir	= /mnt/gm1/data/file/gms_page/nifty
+IgnoreLocalFile	= /mnt/gm1/data/file/gms_page/upload_self_check.sh
+
+
+# the configuration of 2nd host
+[nifty]
+HostName	= mftp9.nifty.ne.jp
+LoginName	= gm
+#Password	= nifgm		# if a password is not specified
+				  weex asks for it on the terminal.
+SrcDir		= /mnt/gm1/data/file/gms_page/nifty
+DestDir		= /homepage
+IgnoreLocalDir	= {
+	/ignore/*/
+	/*/ignore/*/
+	/*/ignore/
+	/ignore/
+}
+
+
+# the configuration of 3rd host
+# (for backupping data in HDD)
+[backup]
+HostName	= gm1
+LoginName	= gm
+Password	= "gm#345$%@%"
+SrcDir		= /mnt/gm1/data
+DestDir		= /mnt/gm1/dvd/backup
+IgnoreLocalDir	= {
+	/mnt/gm1/data/file/midi
+	/mnt/gm1/data/file/mp3
+}
+
+
+# the configuration of 4th host
+# (sample)
+[sample]
+HostName	= 192.168.1.1
+LoginName	= gm
+Password	= sample
+SrcDir		= /home/gm/data
+DestDir		= /public_html
+IgnoreLocalDir	= /home/gm/data/temp/*/test
+IgnoreLocalFile	= {
+	/home/gm/data/nosend.html
+	temp*
+}
+IgnoreRemoteDir	= /public_html/notouch/[1-9][A-Z][a-z]/
+IgnoreRemoteFile= /public_html/data???
+KeepRemoteDir	= /public_html/noremove
+PreservePermissionDir	= {
+	.
+	*
+}
+ChangePermission	= 700
+ChangePermissionDir	= /home/gm/data/prog[^ABC]
+ConvToLower	= False
+RecordLog	= true
+OverwriteOK	= T
+Silent		= F
+Force		= 0
+Monochrome	= FALSE
+NestSpaces	= 2
+LogDetailLevel	= 3
+MaxRetryToSend	= 4
+FtpPassive	= 1
+ShowHiddenFiles	= n
+FollowSymlinks	= yes
+ChdirAtConnection = true
+
+# the configuration of 5th-7th host
+# You can have multiple web sites on one ftp account
+# by the following technique.
+[host1]
+HostName	= www.giem.ne.jp
+LoginName	= gm
+Password	= ViVaLiNuX
+SrcDir		= /home/gm/giemweb/one
+DestDir		= /one
+IgnoreRemoteDir	= {
+	/two
+	/three
+}
+
+[host2]
+HostName	= www.giem.ne.jp
+LoginName	= gm
+Password	= ViVaLiNuX
+SrcDir		= /home/gm/giemweb/two
+DestDir		= /two
+IgnoreRemoteDir	= {
+	/one
+	/three
+}
+
+[host3]
+HostName	= www.giem.ne.jp
+LoginName	= gm
+Password	= ViVaLiNuX
+SrcDir		= /home/gm/giemweb/three
+DestDir		= /three
+IgnoreRemoteDir	= {
+	/one
+	/two
+}
+
+
+# the configuration of default host
+# (These would be the default values if not explicitly
+#  given in the specific section.)
+[default]
+IgnoreLocalFile	= {
+	*~
+	*.tmp
+	*.bak
+}
+AsciiFile	= *.htm
+AsciiFile	= *.html
+AsciiFile	= *.txt

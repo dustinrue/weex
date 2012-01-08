@@ -1,0 +1,28 @@
+--- ftplib.c.old	Sun May 21 10:58:37 2000
++++ ftplib.c	Fri Feb 15 18:06:43 2002
+@@ -422,7 +422,11 @@
+ 
+     memset(&sin,0,sizeof(sin));
+     sin.sin_family = AF_INET;
+-    lhost = strdup(host);
++    if (strncmp(host, "ftp://", 6) == 0) {
++	    lhost = strdup(host + 6);
++    } else {
++	    lhost = strdup(host);
++    }
+     pnum = strchr(lhost,':');
+     if (pnum == NULL)
+     {
+@@ -444,7 +448,11 @@
+ 	    sin.sin_port = htons(atoi(pnum));
+ 	else
+ 	{
+-	    pse = getservbyname(pnum,"tcp");
++   	if ((pse = getservbyname(pnum,"tcp")) == NULL)
++	    {
++		/* perror("getservbyname"); */
++		return 0;
++	    }
+ 	    sin.sin_port = pse->s_port;
+ 	}
+     }

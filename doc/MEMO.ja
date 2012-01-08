@@ -1,0 +1,211 @@
+Fast Webpage Exchanger という名前をやめる
+
+
+"%s: The remote site needs updating (%d items to update).
+"%s: The remote site needs updating (1 item to update).
+"%s: The remote site does not need updating.
+
+gweex (GNOME版) <-- RuWeex があるからイラネ
+kweex (KDE版)
+
+> 2) A feature to specify a resource file and log/cache directory in the way
+
+> 4) Why don't you also supply the source rpms for download?
+
+> The program leaves temporary rubbish in ~/.weex/ after error exit.
+
+I use weex happily.
+Some Draconian ftp servers do not allow to store some files.
+Upon using:  weex -D  I saw that there are messages:
+
+  227 Entering Passive Mode (216,206,76,245,11,35).
+  STOR /family/famshoe.map
+  550 /family/famshoe.map: Forbidden filename
+  Retrying...
+  TYPE I
+  200 Type set to I.
+  PASV
+  227 Entering Passive Mode (216,206,76,245,11,36).
+  STOR /family/famshoe.map
+  550 /family/famshoe.map: Forbidden filename
+  Retrying...
+
+May be weex can 'understand' this and not bother to retry.
+reagards -- yotam
+
+FtpSendCmd
+-1 ... STOR de 550
+readresp2
+
+readresp2(char c[3],)
+
+    if (!FtpSendCmd(buf, '1', nControl)==-1)
+    {
+        FtpClose2(*nData);
+        *nData = NULL;
+        return -1;
+    }
+
+FtpXfer
+-1 nara no retry
+
+
+STOR /chrisxed/fern/photos/r04p11.jpg
+150 Opening BINARY mode data connection for /chrisxed/fern/photos/r04p11.jpg
+425 Data connection error: Disc quota exceeded
+Retrying...
+retry しないようにする
+
+
+
+
+Q. Why don't you use rsync? It is much faster than weex.
+A. Weex is for a webmaster whose ISP just support FTP connection.
+   If your ISP supports rsync connection, of course I recommend it.
+
+
+
+3.0.0 をリリースしたら chris に知らせてあげる
+
+
+
+
+翻訳ファイル情報
+
+ja.po 2.7.0
+de.po 2.5.0
+es.po 2.5.1
+nl.po 2.6.0
+fr.po 2.6.1
+
+
+
+
+ftp> ls
+ 200 PORT command successful.
+ 150 Opening ASCII mode data connection for /bin/ls.
+ 05-25-99  10:50PM                22703 001.jpg
+ 11-25-99  01:30AM                 2318 anfahrtswege.html
+ 11-25-99  01:30AM                   87 col.html
+ 05-25-99  10:51PM                31111 contruction.gif
+ 11-25-99  01:30AM                 2269 freizeit.html
+ 11-25-99  01:30AM                 2197 gastronom.html
+ 11-25-99  01:30AM                 2589 geniesser.html
+ 11-25-99  01:30AM                 2716 gesundheit.html
+ 11-25-99  01:30AM                 4188 haupt_menu.html
+ 08-04-99  04:05PM                23669 hgr.jpg
+ 11-25-99  01:30AM                 2395 hotelbar.html
+ 11-22-99  11:32PM       <DIR>          icon
+ 11-25-99  01:32AM       <DIR>          image
+ 11-25-99  01:30AM                 2577 index.html
+ 11-02-99  01:34PM                 4310 index.html.bck
+ 11-25-99  01:30AM                 4566 indexold.html
+ 05-25-99  10:51PM                 9016 kph_logo.gif
+ 11-25-99  01:30AM                 2704 kultur.html
+ 11-25-99  01:30AM                 3141 kur_gesund.html
+ 11-25-99  01:30AM                 3512 kur_gesundheit.html
+ 11-25-99  01:30AM                 2525 kurparkterasse.html
+ 11-25-99  01:30AM                 3355 lage.html
+ 11-25-99  01:30AM                  162 links_oben.html
+ 11-25-99  01:30AM                  424 logo.html
+ 08-04-99  04:05PM                 4942 Logo03.gif
+ 11-25-99  01:30AM                  162 mitte_oben.html
+ 11-21-99  04:20PM       <DIR>          mytest
+ 11-25-99  01:30AM                 2671 natur.html
+ 11-25-99  01:30AM                 3438 preise.html
+ 11-25-99  01:30AM                 2413 reservierung.html
+ 11-25-99  01:30AM                 3003 restaurant.html
+ 11-25-99  01:30AM                 4401 selfhtml.html
+ 11-25-99  01:30AM                 2918 seminare.html
+ 11-25-99  01:30AM                 3134 spiel.html
+ 11-25-99  01:30AM                 2884 sport.html
+ 11-25-99  01:30AM                  445 test.html
+ 11-25-99  01:30AM                 3580 titel.html
+ 11-25-99  01:30AM                 2348 u_menu_1.html
+ 11-25-99  01:30AM                 2559 u_menu_2.html
+ 11-25-99  01:30AM                 2200 u_menu_3.html
+ 11-25-99  01:30AM                 1838 u_menu_4.html
+ 11-25-99  01:30AM                 2669 u_menu_5.html
+ 11-25-99  01:30AM                 1838 u_menu_6.html
+ 11-25-99  01:30AM                 2363 u_menu_7.html
+ 11-25-99  01:30AM                 3213 veranstaltungen.html
+ 11-25-99  01:30AM                 2337 weg_preis.html
+ 11-25-99  01:30AM                 3193 weih_silv.html
+ 11-25-99  01:30AM                 2761 weihnacht.html
+ 11-25-99  01:30AM                 2888 zimmer.html
+ 226 Transfer complete.
+ ftp> exit
+
+
+
+SIGTERM,SIGINT などをtrap
+受けたらtempファイルを削除し、キャッシュを書き込んで終了
+
+Dir の指定に * が使われていたら
+カレントディレクトリも含むようにする
+
+ファイル名に空白が含まれていると正常にパースできない
+
+
+
+IgnoreFile
+KeepFile
+AsciiFile
+PreservePermissionFile
+ChangePermissionFile
+は相対パスを正規化しません。
+必ず絶対パスで指定してください。というか、ファイル名だけを指定しましょう。
+
+default セクションで相対パスを使わないでください。
+
+
+FAQ
+    weexrc で「FtpPassive」を false にしてやってください。PORT モードでアクセス
+    するようになります。ただしファイアウォールの内側からの接続だとうまくいかない可能性があります。
+
+
+FollowSymlinks=FALSE のときの動作
+ディレクトリへのシンボリックリンクはサイズ 0 のファイルとして処理される
+ファイルへのシンボリックリンクは、リンク先が更新されても、シンボリックリンク
+自体が更新されたとは判断されない (よって転送されない)。
+
+FollowSymlinks=TRUE のときの動作
+上記 2 つともユーザの期待通りの動作をする。
+
+
+
+
+
+cache
+dir_data, file_data はソートしておく
+検索には 2 分探索を使う
+
+
+
+サンプル weexrc
+
+# Global configuration settings
+[default]
+AsciiFile = {
+*.htm
+*.html
+*.txt
+*.asc
+*.php
+*.php3
+*.java
+*.css
+*.js
+}
+IgnoreLocalFile = {
+*.bak
+*.tmp
+*.swp
+*~
+.*
+}
+IgnoreLocalDir = {
+.xvpics
+}
+
+The sample.weexrc did not work, though. There was one line break error and an unknown parameter ShowHiddenFiles.

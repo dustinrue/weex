@@ -1,0 +1,677 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-03-25 18:40+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/weex.c:126
+#, c-format
+msgid "Internal error has occurred in %s at line %d.\n"
+msgstr ""
+
+#: src/weex.c:127
+#, c-format
+msgid "It must be a bug. Please send a bug report to the author.\n"
+msgstr ""
+
+#: src/weex.c:152
+#, c-format
+msgid ""
+"weex version %s Copyright (C) 1999-2001 Yuuki NINOMIYA <gm@debian.or.jp>\n"
+"\n"
+msgstr ""
+
+#: src/weex.c:153 src/weex.c:186
+#, c-format
+msgid ""
+"This program comes with ABSOLUTELY NO WARRANTY, to the extent permitted by "
+"law.\n"
+"You may redistribute it under the terms of the GNU General Public License.\n"
+"For more information about these matters, see the file named COPYING.\n"
+"\n"
+msgstr ""
+
+#: src/weex.c:156
+#, c-format
+msgid ""
+"usage: weex [OPTIONS] HOST...\n"
+"\n"
+msgstr ""
+
+#: src/weex.c:157
+#, c-format
+msgid "options:\n"
+msgstr ""
+
+#: src/weex.c:158
+#, c-format
+msgid "  -c, --config-file=FILE   use an alternate configuration file\n"
+msgstr ""
+
+#: src/weex.c:159
+#, c-format
+msgid "  -w, --not-mkdir-weex     not make ~/.weex directory on startup\n"
+msgstr ""
+
+#: src/weex.c:160
+#, c-format
+msgid "  -v, --view               display the host difinitions\n"
+msgstr ""
+
+#: src/weex.c:161
+#, c-format
+msgid "  -l, --list               display a listing of files needing update\n"
+msgstr ""
+
+#: src/weex.c:162
+#, c-format
+msgid "  -n, --nlist              display the number of files needing update\n"
+msgstr ""
+
+#: src/weex.c:163
+#, c-format
+msgid "  -r, --rebuild-cache      rebuild a cache file\n"
+msgstr ""
+
+#: src/weex.c:164
+#, c-format
+msgid ""
+"  -R, --catch-up           rebuild a cache file as all files are updated\n"
+msgstr ""
+
+#: src/weex.c:165
+#, c-format
+msgid "  -u, --upload             transfer files from local to remote\n"
+msgstr ""
+
+#: src/weex.c:166
+#, c-format
+msgid "  -d, --download           transfer files from remote to local\n"
+msgstr ""
+
+#: src/weex.c:167
+#, c-format
+msgid "  -a, --all-hosts          process all defined hosts\n"
+msgstr ""
+
+#. printf(_("  -C, --confirmation       request confirmation when change files\n"));
+#: src/weex.c:169
+#, c-format
+msgid "  -f, --force              transfer all files whether updated or not\n"
+msgstr ""
+
+#. printf(_("  -s, --simulate           perform ordering simulation (not actually change)\n"));
+#: src/weex.c:171
+#, c-format
+msgid "  -q, --quiet              suppress non-error messages\n"
+msgstr ""
+
+#: src/weex.c:172
+#, c-format
+msgid "  -p, --suppress-progress  suppress progress information\n"
+msgstr ""
+
+#: src/weex.c:173
+#, c-format
+msgid "  -m, --monochrome         output messages in monochromee\n"
+msgstr ""
+
+#: src/weex.c:174
+#, c-format
+msgid "  -g, --debug              enable debug output\n"
+msgstr ""
+
+#: src/weex.c:175
+#, c-format
+msgid "  -h, --help               display this help and exit\n"
+msgstr ""
+
+#: src/weex.c:176
+#, c-format
+msgid "  -V, --version            display version information and exit\n"
+msgstr ""
+
+#: src/weex.c:185
+#, c-format
+msgid ""
+"weex %s\n"
+"Copyright (C) 1999-2001 Yuuki NINOMIYA <gm@debian.or.jp>\n"
+"\n"
+msgstr ""
+
+#: src/weex.c:202
+#, c-format
+msgid "Cannot make directory `%s'.\n"
+msgstr ""
+
+#: src/weex.c:205
+#, c-format
+msgid "Directory `%s' has been made.\n"
+msgstr ""
+
+#: src/ftplib.c:304
+#, c-format
+msgid "net_write(1) returned %d, errno = %d\n"
+msgstr ""
+
+#: src/ftplib.c:318
+#, c-format
+msgid "net_write(2) returned %d, errno = %d\n"
+msgstr ""
+
+#: src/ftplib.c:332
+#, c-format
+msgid "net_write(3) returned %d, errno = %d\n"
+msgstr ""
+
+#: src/ftplib.c:350 src/ftplib.c:364
+msgid "Control socket read failed"
+msgstr ""
+
+#: src/ftplib.c:388
+#, c-format
+msgid "Network failed to start: %d\n"
+msgstr ""
+
+#: src/ftplib.c:874
+#, c-format
+msgid "PASV command fails. Try PORT mode.\n"
+msgstr ""
+
+#: src/ftplib.c:1187
+#, c-format
+msgid "short write: passed %d, wrote %d\n"
+msgstr ""
+
+#: src/ftplib.c:1204
+#, c-format
+msgid "           : %*ld/%ld (%3ld%%) [ "
+msgstr ""
+
+#: src/ftplib.c:1221
+msgid "localfile write"
+msgstr ""
+
+#: src/parsecfg.c:334
+#, c-format
+msgid "Cannot open configuration file `%s'.\n"
+msgstr ""
+
+#: src/parsecfg.c:337
+#, c-format
+msgid "Cannot create configuration file `%s'.\n"
+msgstr ""
+
+#: src/parsecfg.c:340
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Syntax error\n"
+msgstr ""
+
+#: src/parsecfg.c:343
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Unrecognized parameter\n"
+msgstr ""
+
+#: src/parsecfg.c:346
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Internal error\n"
+msgstr ""
+
+#: src/parsecfg.c:349
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Invalid number\n"
+msgstr ""
+
+#: src/parsecfg.c:352
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Out of range\n"
+msgstr ""
+
+#: src/parsecfg.c:355
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Cannot allocate memory.\n"
+msgstr ""
+
+#: src/parsecfg.c:358
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"It must be specified TRUE or FALSE.\n"
+msgstr ""
+
+#: src/parsecfg.c:361
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"The section name is already used.\n"
+msgstr ""
+
+#: src/parsecfg.c:364
+#, c-format
+msgid ""
+"%s(%d)\n"
+"There is no closing brace.\n"
+msgstr ""
+
+#: src/parsecfg.c:369
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Unexplained error\n"
+msgstr ""
+
+#: src/shhopt.c:234 src/shhopt.c:260
+#, c-format
+msgid "invalid number `%s'\n"
+msgstr ""
+
+#: src/shhopt.c:237 src/shhopt.c:263
+#, c-format
+msgid "number `%s' to `%s' out of range\n"
+msgstr ""
+
+#: src/shhopt.c:368
+#, c-format
+msgid "unrecognized option `%s'\n"
+msgstr ""
+
+#: src/shhopt.c:381 src/shhopt.c:419
+#, c-format
+msgid "option `%s' requires an argument\n"
+msgstr ""
+
+#: src/shhopt.c:387
+#, c-format
+msgid "option `%s' doesn't allow an argument\n"
+msgstr ""
+
+#: src/shhopt.c:409
+#, c-format
+msgid "unrecognized option `-%c'\n"
+msgstr ""
+
+#: src/strlib.c:64 src/strlib.c:84
+#, c-format
+msgid "Cannot allocate memory.\n"
+msgstr ""
+
+#: src/config.c:159
+#, c-format
+msgid "Configuration file `%s' is not found.\n"
+msgstr ""
+
+#: src/config.c:160
+#, c-format
+msgid ""
+"Running weex setup wizard...\n"
+"\n"
+msgstr ""
+
+#: src/config.c:167
+#, c-format
+msgid "There is no section in configuration file `%s'.\n"
+msgstr ""
+
+#: src/config.c:171
+#, c-format
+msgid ""
+"\n"
+"An error has occured while parsing configuration file `%s'.\n"
+msgstr ""
+
+#: src/config.c:194 src/mainloop.c:210
+#, c-format
+msgid "Specified host (section) name `%s' is undefined.\n"
+msgstr ""
+
+#: src/config.c:200 src/mainloop.c:215
+#, c-format
+msgid "Specified host (section) number `%s' is undefined.\n"
+msgstr ""
+
+#: src/config.c:281 src/config.c:295
+#, c-format
+msgid "%-30s : not configured\n"
+msgstr ""
+
+#: src/config.c:332
+#, c-format
+msgid "Section `default' is required.\n"
+msgstr ""
+
+#: src/config.c:615
+#, c-format
+msgid ""
+"`%s' is wrong value for parameter `DefaultTransferDirection' in section `%"
+"s'.\n"
+"It must be `upload' or `download'.\n"
+msgstr ""
+
+#: src/config.c:627
+#, c-format
+msgid ""
+"`%s' is wrong value for parameter `DetectingModificationMethod' in section `%"
+"s'.\n"
+"It must be `time' or `size' or `timesize'.\n"
+msgstr ""
+
+#: src/config.c:639
+#, c-format
+msgid ""
+"`%s' is wrong value for parameter `AccessMethod' in section `%s'.\n"
+"It must be `ftp' or `rsync' or `scp'.\n"
+msgstr ""
+
+#: src/config.c:653
+#, c-format
+msgid "Welcome to weex setup wizard!\n"
+msgstr ""
+
+#: src/config.c:654
+#, c-format
+msgid ""
+"You can configure weex by just answering some questions with this wizard.\n"
+msgstr ""
+
+#: src/config.c:655
+#, c-format
+msgid ""
+"If you want to write weexrc file by hand or just you specified wrong\n"
+"configuration file, kill the process by Ctrl-C.\n"
+"\n"
+msgstr ""
+
+#: src/config.c:663
+msgid ""
+"\n"
+"1) configure new host\n"
+"2) reconfigure existing host\n"
+"3) display current configuration\n"
+"4) write weexrc and exit\n"
+"\n"
+msgstr ""
+
+#: src/config.c:691
+#, c-format
+msgid "Configuration file `%s' has been created.\n"
+msgstr ""
+
+#: src/config.c:694
+#, c-format
+msgid "An error has occured while writing configuration file `%s'.\n"
+msgstr ""
+
+#: src/config.c:698
+#, c-format
+msgid ""
+"Enter between 1 and 4.\n"
+"\n"
+msgstr ""
+
+#: src/config.c:708
+msgid "Enter host identifier. (e.g., myhost)\n"
+msgstr ""
+
+#: src/config.c:725
+#, c-format
+msgid "%d) HostIdentifier: %-10s    HostName: %s\n"
+msgstr ""
+
+#: src/config.c:728
+msgid "Choose host you want to reconfigure.\n"
+msgstr ""
+
+#: src/config.c:733
+#, c-format
+msgid "No such host.\n"
+msgstr ""
+
+#: src/config.c:768
+msgid ""
+"Enter remote host name or IP address. (e.g., ftp.myhost.org, 192.168.0.1)\n"
+msgstr ""
+
+#: src/config.c:770
+msgid "Enter login name of the account.\n"
+msgstr ""
+
+#: src/config.c:772
+msgid "Enter password granting access to the account.\n"
+msgstr ""
+
+#: src/config.c:774
+msgid ""
+"Enter local top directory. It must be specified as absolute path.\n"
+"(e.g., /home/foo/www)\n"
+msgstr ""
+
+#: src/config.c:776
+msgid ""
+"Enter remote top directory. It must be specified as absolute path.\n"
+"(e.g., /public_html)\n"
+msgstr ""
+
+#: src/config.c:785
+#, c-format
+msgid "Just press enter to leave default. (default is: ********)\n"
+msgstr ""
+
+#: src/config.c:790 src/config.c:823
+#, c-format
+msgid "Not changed.\n"
+msgstr ""
+
+#: src/config.c:796
+#, c-format
+msgid ""
+"\n"
+"Retype password for confirmation.\n"
+msgstr ""
+
+#: src/config.c:799
+#, c-format
+msgid ""
+"\n"
+"Passwords do not match.\n"
+"\n"
+msgstr ""
+
+#: src/config.c:808
+#, c-format
+msgid "Just press enter to leave default. (default is: %s)\n"
+msgstr ""
+
+#: src/config.c:863 src/local.c:108 src/local.c:184
+#, c-format
+msgid "Cannot get file status: %s\n"
+msgstr ""
+
+#: src/config.c:869
+#, c-format
+msgid ""
+"Warning! `%s' permissions allow other users to read your configuration "
+"file.\n"
+"Set the permissions to 0600.\n"
+"\n"
+msgstr ""
+
+#: src/mainloop.c:89
+#, c-format
+msgid "Rebuilding cache for downloading...\n"
+msgstr ""
+
+#: src/mainloop.c:91
+#, c-format
+msgid ""
+"Cache file is not found.\n"
+"Creating a new one...\n"
+msgstr ""
+
+#: src/mainloop.c:109
+#, c-format
+msgid "The remote host doesn't need updating.\n"
+msgstr ""
+
+#: src/mainloop.c:111
+#, c-format
+msgid "The local host doesn't need updating.\n"
+msgstr ""
+
+#: src/mainloop.c:220
+#, c-format
+msgid "Cannot specify section `default'.\n"
+msgstr ""
+
+#: src/mainloop.c:235
+#, c-format
+msgid "Local --> Remote (upload)\n"
+msgstr ""
+
+#: src/mainloop.c:238
+#, c-format
+msgid "Local <-- Remote (download)\n"
+msgstr ""
+
+#: src/mainloop.c:248
+#, c-format
+msgid "Rebuilding cache...\n"
+msgstr ""
+
+#: src/mainloop.c:264
+#, c-format
+msgid "Rebuilding cache as all files are updated...\n"
+msgstr ""
+
+#: src/local.c:86
+#, c-format
+msgid "Cannot open directory `%s'.\n"
+msgstr ""
+
+#: src/local.c:113
+#, c-format
+msgid ""
+"Cannot expand symbolic link `%s'.\n"
+"This file is ignored.\n"
+msgstr ""
+
+#: src/local.c:148
+#, c-format
+msgid "Cannot close directory `%s'.\n"
+msgstr ""
+
+#: src/local.c:199
+#, c-format
+msgid "ConvToLower causes a conflict between `%s' and `%s'. Proceed anyway.\n"
+msgstr ""
+
+#: src/ftp.c:50
+#, c-format
+msgid "Cannot connect host `%s'.\n"
+msgstr ""
+
+#: src/ftp.c:62
+#, c-format
+msgid "The login name is not configured.\n"
+msgstr ""
+
+#: src/ftp.c:66
+#, c-format
+msgid "No password specified in configuration file for `%s'. Asking ...\n"
+msgstr ""
+
+#: src/ftp.c:67
+msgid "Password: "
+msgstr ""
+
+#: src/ftp.c:72
+#, c-format
+msgid "Login failed. Check your ID and password.\n"
+msgstr ""
+
+#: src/ftp.c:92
+#, c-format
+msgid "Cannot get a listing of the contents of remote directory `%s'.\n"
+msgstr ""
+
+#: src/ftp.c:112 src/ftp.c:118 src/ftp.c:145
+#, c-format
+msgid ""
+"Cannot parse a listing of the contents of a remote directory:\n"
+"%s\n"
+msgstr ""
+
+#: src/ftp.c:211
+#, c-format
+msgid "Cannot parse last modification time: %s.\n"
+msgstr ""
+
+#: src/ftp.c:228
+#, c-format
+msgid "`%s' is wrong time.\n"
+msgstr ""
+
+#: src/ftp.c:234
+#, c-format
+msgid "Cannot get last modification time of `%s'.\n"
+msgstr ""
+
+#: src/remote.c:65
+#, c-format
+msgid "The host name is not configured.\n"
+msgstr ""
+
+#: src/remote.c:177
+#, c-format
+msgid "Cannot open file `%s'.\n"
+msgstr ""
+
+#: src/remote.c:187
+#, c-format
+msgid ""
+"Listing remote directory contents failed: %s\n"
+"The directory doesn't exist or permission denied.\n"
+msgstr ""
+
+#: src/remote.c:267
+#, c-format
+msgid "Cannot close file `%s'.\n"
+msgstr ""
+
+#: src/remote.c:292
+#, c-format
+msgid "Cannot create a unique file name.\n"
+msgstr ""
+
+#: src/remote.c:297
+#, c-format
+msgid "Cannot close temporary file `%s'.\n"
+msgstr ""
+
+#: src/remote.c:316
+#, c-format
+msgid "Cannot remove temporary file `%s'.\n"
+msgstr ""

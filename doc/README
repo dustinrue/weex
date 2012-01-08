@@ -1,0 +1,430 @@
++-----------------------------------------------------------------------+
+|                                                                       |
+|                         Fast Webpage Exchanger                        |
+|                                                                       |
+|                 Copyright (C) 1999-2000 Yuuki NINOMIYA                |
+|                                                                       |
++-----------------------------------------------------------------------+
+
+* Description
+
+ Fast Webpage Exchanger (weex) is a utility designed to automate the
+task of remotely maintaining a web page or other FTP archive. With weex,
+the maintainer of a web site or archive that must be administered through
+FTP interaction can largely ignore that process.
+
+ The archive administrator simply creates a local directory that serves
+as an exact model for the offsite data. All modifications and direct
+interaction is done locally to this directory structure. When the
+administrator wishes to coordinate the data on the remote site with
+that of the local model directory, simply executing weex accomplishes
+this in the most bandwidth-efficient fashion by only transferring files
+that need updating. The program will create or remove (!) files or
+directories as necessary to accurately establish the local model on the
+remote server.
+
+ `weex' is short for WEb EXchanger and is pronounced like `weeks'.
+ Update your web pages every few weeks with weex. :-)
+
+
+* Features
+
+ + It works automatically based on the configuration file.
+
+ + You can configure more than one FTP server, and update in succession
+   with one command.
+
+ + It sends files that are updated after previous sending by comparing
+   timestamp.
+
+ + Files and directories are removed automatically (only on the remote side).
+ 
+ + You can configure files and directories you want to ignore. And they
+   can be specified with shell wildcards.
+
+ + It can change the access permissions of sent files.
+   It can also copy access permission of the local file to the remote one.
+
+ + You can use it on non-case sensitive FTP servers.
+
+ + Cache facility is supported.
+   Weex caches directory structure, file names and each timestamps.
+   So never slow transfer even if you have many directories and files.
+
+ + It outputs progress bar when sending.
+
+ + A logging facility is supported. It is useful for using weex with cron
+   or background execution.
+
+ + Gettext is supported.
+   Japanese, German, Spanish, Dutch and French translations are available now.
+
+
+* How to install
+
+ % ./configure
+ % make
+ # make install
+
+ And copy sample.weexrc as `~/.weex/weexrc' or `~/.weexrc' and edit it.
+
+
+* Details of the configuration file
+
+ The configuration file is `~/.weex/weexrc' or `~/.weexrc'.
+You need to write this to use weex.
+ The configuration file has raw passwords and this file uses no special
+facilities to safeguard  passwords. So change the access permission
+of it to 0600. If it is not 0?00, a warning will be issued at execution.
+
+ White space and tab are always skipped. If you use special
+characters, quote with double quotes (") or single quotes (').
+ If you use double quotes ("), quote with single quotes ('). If you use
+single quotes ('), quote with double quotes (").
+ Lines that begin with the '#' character are safely ignored as comments.
+If you want to use '#' in a value, quote with ' or ".
+ Parameters are not case sensitive.
+
+ Sections are declared using a keyword reference enclosed in brackets.
+Sections could for example be named:
+[BigProject], [mywebsite], [tripod], etc.
+ Host name `[default]' is a special section. These would be the default
+values if not explicitly given in the specific section.
+
+ Basic format is `PARAMETER = VALUE'.
+
+-----------------------------------------------------
+HostName        = www.enjoy.ne.jp
+LoginName       = ninomiya
+Password        = yuuki
+-----------------------------------------------------
+
+
+ If you want to specify multiple values, specify same parameter or quote
+values with braces.
+
+-----------------------------------------------------
+IgnoreLocalDir  = /mnt/gm1/data/file/gms_page/nifty
+IgnoreLocalDir  = /mnt/gm1/data/file/gms_page/backup
+
+IgnoreLocalFile = {
+	/mnt/gm1/data/file/gms_page/nosend.html
+	/mnt/gm1/data/file/gms_page/bak.html
+}
+-----------------------------------------------------
+
+ The number of values is unlimited.
+ Both files and directories (except SrcDir and DestDir) can be specified
+with shell wildcards.
+ The trailing '/' in directory names is optional.
+ When specifying *files*, if a file or file pattern is given without a path,
+it is assumed to be available when encountered in any directory.
+If it is an explicitly specified path/file combination, the configuration
+is available in that directory.
+ Files/directories except `SrcDir' and `DestDir' can be specified as
+both absolute path and relative path. But you must specify `SrcDir'
+and `DestDir' as the absolute path.
+ When you want to specify `/public_html/ignoreme.html' as the relative path,
+you should specify `./ignoreme.html' rather than `ignoreme.html'.
+ When specifying binary states, you may use any of the following:
+True/False, Yes/No, T/F, 1/0. None are case sensitive.
+
+
+ Here are the FTP server configuration parameters:
+
+ + HostName		Hostname to connect to. The "ftp://" protocol specifier
+			is implied and shouldn't be used. An IP address is also
+			valid and may save lookup time.
+
+ + LoginName		Login name of the account on the FTP server.
+
+ + Password		Plaintext password granting access to the account.
+			If this parameter is not found, weex asks for it
+			on the terminal.
+
+ + SrcDir		Source directory containing the local copy of the
+			information to be mirrored. This setting corresponds to
+			the `pwd' command on shells. 
+
+ + DestDir		Destination directory on the remote FTP server where
+			the mirrored information will be sent.
+			This parameter must be specified as absolute path as well.
+			This setting corresponds to the `pwd' command on traditional
+			FTP clients.
+
+ + IgnoreLocalDir	This parameter contains one or more protected local
+			directories that are completely ignored during the
+			transfer process. This is useful if you want to have
+			subdirectories that are part of a project but don't
+			need to be in the final, online version (i.e., old
+			versions).  
+
+ + IgnoreRemoteDir	This parameter contains one or more protected remote
+			directories that are completely ignored during the
+			transfer process. They are not removed.
+			This is useful if you want to have other material
+			on the remote FTP site that is not related to the
+			specific project that weex is dealing with. This could
+			include, for example, data administered through a different
+			FTP client or process.
+
+ + IgnoreLocalFile	This parameter contains one or more protected local
+			files that are completely ignored during the transfer
+			process.
+
+ + IgnoreRemoteFile	This parameter contains one or more protected remote
+			files that are completely ignored during the transfer
+			process. They are not removed.
+
+ + AsciiFile		Filenames/patterns (local) that will be transferred
+			using ASCII mode.  The default mode for files not
+			specified in this way is IMAGE (BINARY) mode.
+
+ + KeepRemoteDir	In their directories, files are not removed when
+			they don't exist in the local directory.
+			Here is a tip!
+			If you want not to remove any file, set it to:
+			KeepRemoteDir = {
+				*
+				.
+			}
+
+ + ChangePermissionDir	Files in directories assigned to this parameter will 
+			have their access permissions changed after sending.
+                        Specify *local* directories.
+
+ + ChangePermission	The access permissions of the files in the 
+			ChangePermissionDir. The format is a three
+                        digit octal number.
+
+ + PreservePermissionDir	The access permissions of the files in directories
+				assigned to this parameter will be copied to remote.
+				Specify *local* directories.
+				If ChangePermissionDir and PreservePermissionDir
+				conflict, the former has priority.
+
+ + NestSpaces		Controls the indentation spacing. Default is 4.
+			If you want to suppress it, specify -1. If you
+			specify 0, weex assumes you specify 4. :-)
+
+ + MaxRetryToSend	When weex fails in sending a file, it retry to send
+			the file. The maximum times of retrying is this parameter.
+			Default is 8.
+			Specify -1 to stop retrying.
+
+ + ConvToLower		When it is `true', convert letters to lower case
+			before sending. This is for servers with case
+			sensitivity problems. The program fails with a
+			warning in the case of a naming conflict.
+			Default is `false'.
+
+ + OverwriteOK		If the FTP server has trouble overwriting files,
+			set this parameter to `false'.
+			Default is `true'.
+
+ + RecordLog		When `true', weex create a log. Log file is
+			`~/.weex/weex.log'.
+			Default is `true'.
+
+ + LogDetailLevel	It specifies how detail level weex records a log at.
+			Connection and disconnection message and error messages
+			are always recorded.
+			When weex finishes working correctly, it writes `Complete'
+			previous disconnection message.
+
+			1 or less ... records each connection
+			2 ........... records each directory
+			3 or more ... records each file manipulated
+
+			Default is 1.
+
+ + Silent		Set `true' to suppresses normal non-error messages.
+			Default is `false'.
+
+ + Monochrome		Set `true' to output messages in monochrome.
+			Default is `false'.
+
+ + Force		Set `true' to send all files without timestamp condition.
+			Default is `false'.
+
+ + FtpPassive		Set `false' to use port mode instead of passive mode.
+			If the FTP server doesn't support passive mode, set `false'.
+			(It may make transfer slower)
+			Default is `true'.
+			(See also FAQ)
+
+ + ShowHiddenFile	Set `true' to get hidden files (starting with a dot) on
+			FTP server which doesn't show hidden files by default.
+			Default is `false'.
+
+ + FollowSymlinks	Set `true' to follow symbolic links.
+			Default is `false'. Symbolic link of directory assumes
+			a file whose size is 0 byte by default.
+
+ + ChdirAtConnection	Set `true' to change remote current working directory
+			to DestDir at connection.
+			If remote current working directory at connection is
+			DestDir, weex runs faster a bit by setting this parameter
+			to `false'.
+			Default is `true'.
+
+
+* Details of command line options
+
+usage: weex [OPTIONS] HOST...
+
+ HOST is a section name in the configuration file. You can specify
+not only hosts by name but also host number.
+ When you set invalid options or host name (number), usage information
+displays and the program exits.
+
+options:
+  -h | --help           Outputs a usage summary to stdout.
+  -s | --silent         The default mode outputs a helpful status message
+                        for each action taken. This mode suppresses output.
+  -f | --force          If the caching mechanism is inhibiting the uploading
+                        of files that should be transferred, this option will
+                        force the actual transfer to always occur.
+  -m | --monochrome     The default mode generates a helpful color coding
+                        based on the operation being performed. This option
+                        suppresses that.
+  -t | --test           Weex doesn't modify any remote files/directories.
+  -r | --rebuild-cache  If cache file is broken, use this to rebuild it.
+  -d | --debug-config   Outputs the configuration of each hosts
+  -D | --debug-ftplib   Outputs messages from/to FTP server.
+  -V | --version        Prints the version of the weex program.
+
+
+* Examples
+
+ + weex foo		Common.
+
+ + weex foo bar		Send to 2 hosts.
+
+ + weex 2 1		You can specify host number as well.
+
+ + weex 4 foo 7 bar 1	You can do such a thing.
+
+ + weex 3 3 3		Meaningless? :-p
+
+ + weex -s foo		Suppress normal non-error messages.
+
+ + weex 1 >& /dev/null	Error messages wipe off as well. heheh.
+
+ + weex -m bar		Messages are output as monochrome.
+
+ + weex 3 -f		Send all files without timestamp condition.
+
+ + weex -t foo		Any files on host `foo' is not modified.
+
+ + weex -r bar		If cache file is broken, use this to rebuild cache.
+
+ + weex -h		Display usage.
+
+ + weex			Displays usage, too.
+
+ + weex -d		Display configuration of hosts for debugging.
+
+ + weex -D 1		Output messages from/to FTP server.
+			If weex doesn't work fine, use this option and
+			send its result to me.
+
+ + weex --monochrome 1	Full spelling is available as well.
+
+
+* Notes about the cache facility
+
+ weex implements a cache of file timestamps from Ver 1.6.0.
+This makes updating much faster when you have a lot of files.
+ In addition, weex also caches directory structure and file
+names from Ver 2.5.0. So never slow transfer even if you have
+many directories and files.
+ If, however, you change the remote files with another FTP client
+or running weex is killed or weex is terminated by an error,
+the cache file will not be correct. The simple solution to
+this problem is to remove the cache file (located in
+`~/.weex/weex.cache.HOSTNAME') completely or to run weex with
+option `--rebuild-cache'.
+
+
+* Limits
+
+ None.
+
+
+* Tested OS
+
+ + Debian GNU/Linux 2.1
+ + Red Hat Linux 5.1/5.2/6.0/6.1J
+ + SuSE Linux 6.1/6.2/6.3/6.4
+ + Linux Mandrake 6.1
+ + FreeBSD(98) 3.0-RELEASE
+ + FreeBSD 3.3-RELEASE
+ + Solaris 2.5.1
+
+
+* Notice 
+
+ This software uses shhopt for parsing command line options.
+Shhopt is released under the Artistic License. You can use
+it separately under the Artistic License if you want.
+
+
+* Copying
+
+ The copyright of this software belongs to Yuuki NINOMIYA.
+ It is released under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2,
+or (at your option) any later version.
+ You can redistribute it and/or modify it under the GPL.
+
+
+* Request to users
+
+ I have an incomplete mastery of the English language, so please help
+correct the text of the documents and messages in this program.
+ Comments, suggestions, bug reports and patches are welcome.
+Please mail them to me at the following address.
+
+
+* Contact me
+
+ e-mail : gm@debian.or.jp
+
+
+* The latest version
+
+ http://www.enjoy.ne.jp/~gm/program/weex/
+
+
+* Mailing list
+
+ I set up mailing lists for supporting weex users. 
+Send e-mail to subscribe a mailing list.
+
+ + Weex Mailing List (English language)
+    Post Message : weex@eGroups.com
+    Subscribe    : weex-subscribe@eGroups.com
+    Unsubscribe  : weex-unsubscribe@eGroups.com
+
+ + Weex Japanese Mailing List (Japanese language)
+    Post Message : weex-ja@egroups.co.jp
+    Subscribe    : weex-ja-subscribe@egroups.co.jp
+    Unsubscribe  : weex-ja-unsubscribe@egroups.co.jp
+
+ Messages and information about mailing lists are availble from
+the following.
+
+Weex Mailing List          : http://www.egroups.com/list/weex/info.html
+Weex Japanese Mailing List : http://www.egroups.co.jp/list/weex-ja/info.html
+
+
+* My webpage
+
+ Yuuki NINOMIYA's webpage
+ http://www.enjoy.ne.jp/~gm/
+
+
+-----------------------------------
+Yuuki NINOMIYA <gm@debian.or.jp>
+

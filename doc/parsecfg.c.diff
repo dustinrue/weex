@@ -1,0 +1,41 @@
+--- parsecfg.c.orig	Tue Jan 16 08:22:10 2001
++++ parsecfg.c	Tue Jan 16 08:25:22 2001
+@@ -22,6 +22,8 @@
+ 
+ /* $Id: parsecfg.c.diff,v 1.1.1.1 2002/08/30 19:24:52 gmkun Exp $ */
+ 
++/* modified for weex */
++
+ #ifdef HAVE_CONFIG_H
+ #  include "config.h"
+ #endif
+@@ -843,11 +845,7 @@
+ 				return (CFG_MEM_ALLOC_FAIL);
+ 			}
+ 			*(int **) (cfg[num].value) = ptr;
+-			if (cfg[num].type == CFG_BOOL) {
+-				*(*((int **) (cfg[num].value)) + *section) = -1;
+-			} else {
+-				*(*((int **) (cfg[num].value)) + *section) = 0;
+-			}
++			*(*((int **) (cfg[num].value)) + *section) = -1;
+ 			break;
+ 
+ 		case CFG_LONG:
+@@ -1073,10 +1071,14 @@
+ 		for (i = 0; cfg[i].type != CFG_END; i++) {
+ 			switch (cfg[i].type) {
+ 			case CFG_BOOL:
+-				fprintf(fp, "%s\t= %s\n", cfg[i].parameterName, (*(int **) (cfg[i].value))[j] ? "True" : "False");
++				if ((*(int **) (cfg[i].value))[j] != -1){
++					fprintf(fp, "%s\t= %s\n", cfg[i].parameterName, (*(int **) (cfg[i].value))[j] ? "True" : "False");
++				}
+ 				break;
+ 			case CFG_INT:
+-				fprintf(fp, "%s\t= %d\n", cfg[i].parameterName, (*(int **) (cfg[i].value))[j]);
++				if ((*(int **) (cfg[i].value))[j] != -1){
++					fprintf(fp, "%s\t= %d\n", cfg[i].parameterName, (*(int **) (cfg[i].value))[j]);
++				}
+ 				break;
+ 			case CFG_UINT:
+ 				fprintf(fp, "%s\t= %u\n", cfg[i].parameterName, (*(unsigned int **) (cfg[i].value))[j]);

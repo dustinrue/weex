@@ -1,0 +1,889 @@
+# weex - a non-interactive mirroring utility
+# Copyright (C) 1999-2001 Yuuki NINOMIYA <gm@debian.or.jp>
+#
+# Japanese translations
+# Yuuki NINOMIYA <gm@debian.or.jp>, 1999-2001.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: weex 3.0.0pre1\n"
+"POT-Creation-Date: 2001-02-19 22:27+0900\n"
+"PO-Revision-Date: 2001-02-19 17:41+09:00\n"
+"Last-Translator: Yuuki NINOMIYA <gm@debian.or.jp>\n"
+"Language-Team: Japanese <ja@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=euc-jp\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/weex.c:125
+#, c-format
+msgid "Internal error has occurred in %s at line %d.\n"
+msgstr "%s の %d 行目で内部エラーが発生しました。\n"
+
+#: src/weex.c:126
+msgid "It must be a bug. Please send a bug report to the author.\n"
+msgstr "これはバグです。作者にバグレポートを送ってください。\n"
+
+#: src/weex.c:151
+#, c-format
+msgid ""
+"weex version %s Copyright (C) 1999-2001 Yuuki NINOMIYA <gm@debian.or.jp>\n"
+"\n"
+msgstr ""
+
+#: src/weex.c:152 src/weex.c:185
+msgid ""
+"This program comes with ABSOLUTELY NO WARRANTY, to the extent permitted by "
+"law.\n"
+"You may redistribute it under the terms of the GNU General Public License.\n"
+"For more information about these matters, see the file named COPYING.\n"
+"\n"
+msgstr ""
+"このプログラムには、法律的にも一切の保証はありません。\n"
+"あなたは GNU 一般公有使用許諾書の文言の下において、これを再配布することが\n"
+"できます。これらの事柄に関する詳細は COPYING.ja に記されています。\n"
+"\n"
+
+#: src/weex.c:155
+msgid ""
+"usage: weex [OPTIONS] HOST...\n"
+"\n"
+"options:\n"
+msgstr ""
+"使用法: weex [オプション] ホスト...\n"
+"\n"
+"オプション:\n"
+
+#: src/weex.c:156
+msgid "  -c | --config-file=FILE   use an alternate configuration file\n"
+msgstr "  -c | --config-file=FILE   別の設定ファイルを使用\n"
+
+#: src/weex.c:157
+msgid "  -w | --not-mkdir-weex     not make ~/.weex directory on startup\n"
+msgstr ""
+"  -w | --not-mkdir-weex     起動時に ~/.weex ディレクトリを作成しない\n"
+
+#: src/weex.c:158
+msgid "  -v | --view               display the host difinitions\n"
+msgstr "  -v | --view               ホストの設定を表示\n"
+
+#: src/weex.c:159
+msgid "  -l | --list               display a listing of files needing update\n"
+msgstr "  -l | --list               更新が必要なファイルの一覧を表示\n"
+
+#: src/weex.c:160
+msgid ""
+"  -n | --nlist              display the number of files needing update\n"
+msgstr "  -n | --nlist              更新が必要なファイルの数を表示\n"
+
+#: src/weex.c:161
+msgid "  -r | --rebuild-cache      rebuild a cache file\n"
+msgstr "  -r | --rebuild-cache      キャッシュファイルを再構築\n"
+
+#: src/weex.c:162
+#, fuzzy
+msgid ""
+"  -R | --catch-up           rebuild a cache file as all files are updated\n"
+msgstr ""
+"  -f | --force              "
+"更新されているかどうかにかかわらず全てのファイルを転送\n"
+
+#: src/weex.c:163
+msgid "  -u | --upload             transfer files from local to remote\n"
+msgstr "  -u | --upload             ローカルからリモートへファイルを転送\n"
+
+#: src/weex.c:164
+msgid "  -d | --download           transfer files from remote to local\n"
+msgstr "  -d | --download           リモートからローカルへファイルを転送\n"
+
+#: src/weex.c:165
+msgid "  -a | --all-hosts          process all defined hosts\n"
+msgstr "  -a | --all-hosts          定義されている全てのホストを処理\n"
+
+#: src/weex.c:166
+#, fuzzy
+msgid "  -C | --confirmation       request confirmation when change files\n"
+msgstr ""
+"  -C | --confirmation       ファイル/ディレクトリが変更される時に確認を要求\n"
+
+#: src/weex.c:167
+msgid "  -f | --force              transfer all files whether updated or not\n"
+msgstr ""
+"  -f | --force              "
+"更新されているかどうかにかかわらず全てのファイルを転送\n"
+
+#: src/weex.c:168
+msgid ""
+"  -t | --test               perform ordering simulation (not actually "
+"change)\n"
+msgstr "  -t | --test               処理をシミュレート (実際には変更しない)\n"
+
+#: src/weex.c:169
+msgid "  -s | --silent             suppress non-error messages\n"
+msgstr "  -s | --silent             エラーメッセージ以外の表示を抑制\n"
+
+#: src/weex.c:170
+msgid "  -q | --quiet              suppress non-error messages\n"
+msgstr "  -q | --quiet              エラーメッセージ以外の表示を抑制\n"
+
+#: src/weex.c:171
+msgid "  -p | --suppress-progress  suppress progress information\n"
+msgstr "  -p | --suppress-progress  進捗情報表示を抑制\n"
+
+#: src/weex.c:172
+msgid "  -m | --monochrome         output messages in monochromee\n"
+msgstr "  -m | --monochrome         メッセージをモノクロで表示\n"
+
+#: src/weex.c:173
+msgid "  -g | --debug              enable debug output\n"
+msgstr "  -g | --debug              デバッグ出力を有効にする\n"
+
+#: src/weex.c:174
+msgid "  -h | --help               display this help and exit\n"
+msgstr "  -h | --help               このヘルプを表示して終了\n"
+
+#: src/weex.c:175
+msgid "  -V | --version            display version information and exit\n"
+msgstr "  -V | --version            バージョン情報を表示して終了\n"
+
+#: src/weex.c:184
+#, c-format
+msgid ""
+"weex %s\n"
+"Copyright (C) 1999-2001 Yuuki NINOMIYA <gm@debian.or.jp>\n"
+"\n"
+msgstr ""
+
+#: src/weex.c:201
+#, c-format
+msgid "Cannot make directory `%s'.\n"
+msgstr "ディレクトリ `%s' を作成できません。\n"
+
+#: src/weex.c:204
+#, c-format
+msgid "Directory `%s' has been created.\n"
+msgstr "ディレクトリ `%s' を作成しました。\n"
+
+#: src/ftplib.c:304
+#, c-format
+msgid "net_write(1) returned %d, errno = %d\n"
+msgstr ""
+"1 番目の net_write() が %d を返しました。エラー番号 (errno) は %d です。\n"
+
+#: src/ftplib.c:318
+#, c-format
+msgid "net_write(2) returned %d, errno = %d\n"
+msgstr ""
+"2 番目の net_write() が %d を返しました。エラー番号 (errno) は %d です。\n"
+
+#: src/ftplib.c:332
+#, c-format
+msgid "net_write(3) returned %d, errno = %d\n"
+msgstr ""
+"3 番目の net_write() が %d を返しました。エラー番号 (errno) は %d です。\n"
+
+#: src/ftplib.c:350 src/ftplib.c:364
+msgid "Control socket read failed"
+msgstr "コントロールソケットの読み込みに失敗"
+
+#: src/ftplib.c:388
+#, c-format
+msgid "Network failed to start: %d\n"
+msgstr "ネットワークの開始に失敗: %d\n"
+
+#: src/ftplib.c:874
+msgid "PASV command fails. Try PORT mode.\n"
+msgstr "PASV コマンドが失敗しました。PORT モードを試します。\n"
+
+#: src/ftplib.c:1182
+#, c-format
+msgid "short write: passed %d, wrote %d\n"
+msgstr "%d バイト中 %d バイトしか書き込めませんでした\n"
+
+#: src/ftplib.c:1199
+msgid "           : %ld/%ld (%ld%%) [ "
+msgstr "          : %ld/%ld (%ld%%) [ "
+
+#: src/ftplib.c:1216
+msgid "localfile write"
+msgstr "ローカルファイルの書き込み"
+
+#: src/parsecfg.c:334
+#, c-format
+msgid "Cannot open configuration file `%s'.\n"
+msgstr "設定ファイル `%s' を開けません。\n"
+
+#: src/parsecfg.c:337
+#, c-format
+msgid "Cannot create configuration file `%s'.\n"
+msgstr "設定ファイル `%s' を作成できません。\n"
+
+#: src/parsecfg.c:340
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Syntax error\n"
+msgstr ""
+"%s(%d): %s\n"
+"文法エラー\n"
+
+#: src/parsecfg.c:343
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Unrecognized parameter\n"
+msgstr ""
+"%s(%d): %s\n"
+"認識できないパラメータ\n"
+
+#: src/parsecfg.c:346
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Internal error\n"
+msgstr ""
+"%s(%d): %s\n"
+"内部エラー\n"
+
+#: src/parsecfg.c:349
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Invalid number\n"
+msgstr ""
+"%s(%d): %s\n"
+"無効な数字\n"
+
+#: src/parsecfg.c:352
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Out of range\n"
+msgstr ""
+"%s(%d): %s\n"
+"有効範囲を超過\n"
+
+#: src/parsecfg.c:355
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Cannot allocate memory.\n"
+msgstr ""
+"%s(%d): %s\n"
+"メモリが確保できません。\n"
+
+#: src/parsecfg.c:358
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"It must be specified TRUE or FALSE.\n"
+msgstr ""
+"%s(%d): %s\n"
+"TRUE か FALSE で指定してください。\n"
+
+#: src/parsecfg.c:361
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"The section name is already used.\n"
+msgstr ""
+"%s(%d): %s\n"
+"このセクション名は既に使われています。\n"
+
+#: src/parsecfg.c:364
+#, c-format
+msgid ""
+"%s(%d)\n"
+"There is no closing brace.\n"
+msgstr ""
+"%s(%d)\n"
+"閉じていない大括弧があります。\n"
+
+#: src/parsecfg.c:369
+#, c-format
+msgid ""
+"%s(%d): %s\n"
+"Unexplained error\n"
+msgstr ""
+"%s(%d): %s\n"
+"不明なエラー\n"
+
+#: src/shhopt.c:234 src/shhopt.c:260
+#, c-format
+msgid "invalid number `%s'\n"
+msgstr "無効な数字 `%s'\n"
+
+#: src/shhopt.c:237 src/shhopt.c:263
+#, c-format
+msgid "number `%s' to `%s' out of range\n"
+msgstr "オプション `%2$s' に指定された数字 `%1$s' は有効範囲を越えています\n"
+
+#: src/shhopt.c:368
+#, c-format
+msgid "unrecognized option `%s'\n"
+msgstr "`%s' は認識できないオプションです\n"
+
+#: src/shhopt.c:381 src/shhopt.c:419
+#, c-format
+msgid "option `%s' requires an argument\n"
+msgstr "オプション `%s' は引数を必要とします\n"
+
+#: src/shhopt.c:387
+#, c-format
+msgid "option `%s' doesn't allow an argument\n"
+msgstr "オプション `%s' に引数は指定できません\n"
+
+#: src/shhopt.c:409
+#, c-format
+msgid "unrecognized option `-%c'\n"
+msgstr "`-%c' は認識できないオプションです\n"
+
+#: src/strlib.c:64 src/strlib.c:84
+msgid "Cannot allocate memory.\n"
+msgstr "メモリが確保できません。\n"
+
+#: src/config.c:159
+#, c-format
+msgid "Configuration file `%s' is not found.\n"
+msgstr "設定ファイル `%s' が見付かりません。\n"
+
+#: src/config.c:160
+msgid ""
+"Running weex setup wizard...\n"
+"\n"
+msgstr ""
+"weex セットアップウィザードを起動しています...\n"
+"\n"
+
+#: src/config.c:167
+#, c-format
+msgid "There is no section in configuration file `%s'.\n"
+msgstr "設定ファイル `%s' にセクションがありません。\n"
+
+#: src/config.c:171
+#, c-format
+msgid ""
+"\n"
+"An error has occured while parsing configuration file `%s'.\n"
+msgstr ""
+"\n"
+"設定ファイル `%s' をパースしている途中でエラーが発生しました。\n"
+
+#: src/config.c:194 src/mainloop.c:210
+#, c-format
+msgid "Specified host (section) name `%s' is undefined.\n"
+msgstr "指定されたホスト (セクション) 名 `%s' は定義されていません。\n"
+
+#: src/config.c:200 src/mainloop.c:215
+#, c-format
+msgid "Specified host (section) number `%s' is undefined.\n"
+msgstr "指定されたホスト (セクション) 番号 `%s' は定義されていません。\n"
+
+#: src/config.c:281 src/config.c:295
+#, fuzzy, c-format
+msgid "%-30s : not configured\n"
+msgstr "%-28s : 未設定\n"
+
+#: src/config.c:332
+msgid "Section `default' is required.\n"
+msgstr "セクション `default' が必要です。\n"
+
+#: src/config.c:615
+#, c-format
+msgid ""
+"`%s' is wrong value for parameter `DefaultTransferDirection' in section "
+"`%s'.\n"
+"It must be `upload' or `download'.\n"
+msgstr ""
+"セクション `%2$s' のパラメータ `DefaultTransferDirection' に指定されている "
+"`%1$s' は間違った値です。\n"
+"これは `upload' か `download' でなくてはなりません。\n"
+
+#: src/config.c:627
+#, c-format
+msgid ""
+"`%s' is wrong value for parameter `DetectingModificationMethod' in section "
+"`%s'.\n"
+"It must be `time' or `size' or `timesize'.\n"
+msgstr ""
+"セクション `%2$s' のパラメータ `DetectingModificationMethod' "
+"に指定されている `%1$s' は間違った値です。\n"
+"これは `time' か `size' か `timesize' でなくてはなりません。\n"
+
+#: src/config.c:639
+#, c-format
+msgid ""
+"`%s' is wrong value for parameter `AccessMethod' in section `%s'.\n"
+"It must be `ftp' or `rsync' or `scp'.\n"
+msgstr ""
+"セクション `%2$s' のパラメータ `AccessMethod' に指定されている `%1$s' "
+"は間違った値です。\n"
+"これは `ftp' か `rsync' か `scp' でなくてはなりません。\n"
+
+#: src/config.c:653
+msgid "Welcome to weex setup wizard!\n"
+msgstr "weex セットアップウィザードへようこそ!\n"
+
+#: src/config.c:654
+msgid ""
+"You can configure weex by just answering some questions with this wizard.\n"
+msgstr ""
+"このウィザードではいくつかの質問に答えるだけで weex の設定ができます。\n"
+
+#: src/config.c:655
+msgid ""
+"If you want to write weexrc file by hand or just you specified wrong\n"
+"configuration file, kill the process by Ctrl-C.\n"
+"\n"
+msgstr ""
+"もし weexrc ファイルを手で書きたい、あるいは単に間違った設定ファイルを\n"
+"指定してしまっただけなのなら、このプロセスを Ctrl-C で終了させてください。\n"
+"\n"
+
+#: src/config.c:663
+msgid ""
+"\n"
+"1) configure new host\n"
+"2) reconfigure existing host\n"
+"3) display current configuration\n"
+"4) write weexrc and exit\n"
+"\n"
+msgstr ""
+"\n"
+"1) 新しいホストを設定\n"
+"2) 既存のホストを再設定\n"
+"3) 現在の設定を表示\n"
+"4) weexrc を書き出して終了\n"
+"\n"
+
+#: src/config.c:691
+#, c-format
+msgid "Configuration file `%s' has been created.\n"
+msgstr "設定ファイル `%s' を作成しました。\n"
+
+#: src/config.c:694
+#, c-format
+msgid "An error has occured while writing configuration file `%s'.\n"
+msgstr "設定ファイル `%s' を書き込んでいる途中でエラーが発生しました。\n"
+
+#: src/config.c:698
+msgid ""
+"Enter between 1 and 4.\n"
+"\n"
+msgstr ""
+"1 から 4 の間で入力してください。\n"
+"\n"
+
+#: src/config.c:708
+msgid "Enter host identifier. (e.g., myhost)\n"
+msgstr "ホスト識別子を入力してください。(例: myhost)\n"
+
+#: src/config.c:725
+#, c-format
+msgid "%d) HostIdentifier: %-10s    HostName: %s\n"
+msgstr "%d) ホスト識別子: %-10s    ホスト名: %s\n"
+
+#: src/config.c:728
+msgid "Choose host you want to reconfigure.\n"
+msgstr "再設定したいホストを選んでください。\n"
+
+#: src/config.c:733
+msgid "No such host.\n"
+msgstr "そのようなホストはありません。\n"
+
+#: src/config.c:768
+msgid ""
+"Enter remote host name or IP address. (e.g., ftp.myhost.org, 192.168.0.1)\n"
+msgstr ""
+"リモートホストの名前か IP アドレスを入力してください。(例: ftp.myhost.org, "
+"192.168.0.1)\n"
+
+#: src/config.c:770
+msgid "Enter login name of the account.\n"
+msgstr "アカウントのログイン名を入力してください。\n"
+
+#: src/config.c:772
+msgid "Enter password granting access to the account.\n"
+msgstr "そのアカウントへアクセスするためのパスワードを入力してください。\n"
+
+#: src/config.c:774
+msgid ""
+"Enter local top directory. It must be specified as absolute path.\n"
+"(e.g., /home/foo/www)\n"
+msgstr ""
+"ローカルトップディレクトリを入力してください。 "
+"これは絶対パスで指定してください。\n"
+"(例: /home/hoge/www)\n"
+
+#: src/config.c:776
+msgid ""
+"Enter remote top directory. It must be specified as absolute path.\n"
+"(e.g., /public_html)\n"
+msgstr ""
+"リモートトップディレクトリを入力してください。 "
+"これは絶対パスで指定してください。\n"
+"(例: /public_html)\n"
+
+#: src/config.c:785
+msgid "Just press enter to leave default. (default is: ********)\n"
+msgstr "Enter を押すとデフォルトのままにしておきます。(デフォルト: ********)\n"
+
+#: src/config.c:790 src/config.c:823
+msgid "Not changed.\n"
+msgstr "変更しませんでした。\n"
+
+#: src/config.c:796
+msgid ""
+"\n"
+"Retype password for confirmation.\n"
+msgstr ""
+"\n"
+"確認のためにもう一度パスワードを入力してください。\n"
+
+#: src/config.c:799
+msgid ""
+"\n"
+"Passwords do not match.\n"
+"\n"
+msgstr ""
+"\n"
+"パスワードが一致しません。\n"
+"\n"
+
+#: src/config.c:808
+#, c-format
+msgid "Just press enter to leave default. (default is: %s)\n"
+msgstr "Enter を押すとデフォルトのままにしておきます。(デフォルト: %s)\n"
+
+#: src/config.c:863 src/local.c:103 src/local.c:168
+#, c-format
+msgid "Cannot get file status: %s\n"
+msgstr "ファイルの情報が取得できません: %s\n"
+
+#: src/config.c:869
+#, c-format
+msgid ""
+"Warning! `%s' permissions allow other users to read your configuration "
+"file.\n"
+"Set the permissions to 0600.\n"
+"\n"
+msgstr ""
+"警告! `%s' のパーミッションは 他のユーザがあなたの設定ファイルを "
+"読むことを許可しています。\n"
+"そのパーミッションを 0600 に設定してください。\n"
+"\n"
+
+#: src/mainloop.c:89
+msgid "Rebuilding cache for downloading...\n"
+msgstr "ダウンロードのためにキャッシュを再構築しています...\n"
+
+#: src/mainloop.c:91
+msgid ""
+"Cache file is not found.\n"
+"Creating a new one...\n"
+msgstr ""
+"キャッシュファイルが見付かりません。\n"
+"新しく作成します。\n"
+
+#: src/mainloop.c:109
+msgid "The remote host doesn't need updating.\n"
+msgstr "リモートホストを更新する必要はありません。\n"
+
+#: src/mainloop.c:111
+msgid "The local host doesn't need updating.\n"
+msgstr "ローカルホストを更新する必要はありません。\n"
+
+#: src/mainloop.c:220
+msgid "Cannot specify section `default'.\n"
+msgstr "`default' セクションを指定することはできません。\n"
+
+#: src/mainloop.c:235
+msgid "Local --> Remote (upload)\n"
+msgstr "ローカル → リモート (アップロード)\n"
+
+#: src/mainloop.c:238
+msgid "Local <-- Remote (download)\n"
+msgstr "リモート → ローカル (ダウンロード)\n"
+
+#: src/mainloop.c:248
+msgid "Rebuilding cache...\n"
+msgstr "キャッシュを再構築しています...\n"
+
+#: src/mainloop.c:264
+#, fuzzy
+msgid "Rebuilding cache as all files are updated...\n"
+msgstr "ダウンロードのためにキャッシュを再構築しています...\n"
+
+#: src/local.c:81
+#, c-format
+msgid "Cannot open directory `%s'.\n"
+msgstr "ディレクトリ `%s' を開けません。\n"
+
+#: src/local.c:108
+#, c-format
+msgid ""
+"Cannot expand symbolic link `%s'.\n"
+"This file is ignored.\n"
+msgstr ""
+"シンボリックリンク `%s' を展開できません。\n"
+"このファイルを無視します。\n"
+
+#: src/local.c:143
+#, c-format
+msgid "Cannot close directory `%s'.\n"
+msgstr "ディレクトリ `%s' をクローズできません。\n"
+
+#: src/local.c:183
+#, c-format
+msgid "ConvToLower causes a conflict between `%s' and `%s'. Proceed anyway.\n"
+msgstr ""
+"ConvToLower が有効なので `%s' と `%s' が衝突します。とにかく継続します。\n"
+
+#: src/ftp.c:50
+#, c-format
+msgid "Cannot connect host `%s'.\n"
+msgstr "ホスト `%s' に接続できません。\n"
+
+#: src/ftp.c:62
+msgid "The login name is not configured.\n"
+msgstr "ログイン名が設定されていません。\n"
+
+#: src/ftp.c:66
+#, c-format
+msgid "No password specified in configuration file for `%s'. Asking ...\n"
+msgstr ""
+"設定ファイルに `%s' のパスワードが指定されていません。入力してください...\n"
+
+#: src/ftp.c:67
+msgid "Password: "
+msgstr "パスワード: "
+
+#: src/ftp.c:72
+msgid "Login failed. Check your ID and password.\n"
+msgstr "ログインに失敗しました。ID とパスワードを確認してください。\n"
+
+#: src/ftp.c:92
+#, c-format
+msgid "Cannot get a listing of the contents of remote directory `%s'.\n"
+msgstr "リモートディレクトリ `%s' の内容一覧を取得できません。\n"
+
+#: src/ftp.c:112 src/ftp.c:118 src/ftp.c:145
+#, c-format
+msgid ""
+"Cannot parse a listing of the contents of a remote directory:\n"
+"%s\n"
+msgstr ""
+"リモートディレクトリの内容一覧をパースできません:\n"
+"%s\n"
+
+#: src/ftp.c:211
+#, fuzzy, c-format
+msgid "Cannot parse last modification time: %s.\n"
+msgstr "`%s' の最終更新時刻を取得できません。\n"
+
+#: src/ftp.c:228
+#, c-format
+msgid "`%s' is wrong time.\n"
+msgstr ""
+
+#: src/ftp.c:234
+#, c-format
+msgid "Cannot get last modification time of `%s'.\n"
+msgstr "`%s' の最終更新時刻を取得できません。\n"
+
+#: src/remote.c:65
+msgid "The host name is not configured.\n"
+msgstr "ホスト名が設定されていません。\n"
+
+#: src/remote.c:177
+#, c-format
+msgid "Cannot open file `%s'.\n"
+msgstr "ファイル `%s' を開けません。\n"
+
+#: src/remote.c:187
+#, c-format
+msgid ""
+"Listing remote directory contents failed: %s\n"
+"The directory doesn't exist or permission denied.\n"
+msgstr ""
+"リモートディレクトリの内容一覧の取得に失敗: %s\n"
+"ディレクトリが存在しないか、許可がありません。\n"
+
+#: src/remote.c:267
+#, c-format
+msgid "Cannot close file `%s'.\n"
+msgstr "ファイル `%s' をクローズできません。\n"
+
+#: src/remote.c:292
+msgid "Cannot create a unique file name.\n"
+msgstr "ユニークなファイル名を作成できません。\n"
+
+#: src/remote.c:297
+#, fuzzy, c-format
+msgid "Cannot close temporary file `%s'.\n"
+msgstr "一時ファイルをクローズできません。\n"
+
+#: src/remote.c:316
+#, fuzzy, c-format
+msgid "Cannot remove temporary file `%s'.\n"
+msgstr "ファイル `%s' を削除できません。\n"
+
+#~ msgid "Created directory `%s'.\n"
+#~ msgstr "ディレクトリ `%s' を作成しました。\n"
+
+#~ msgid "Cache file `%s' does not exist."
+#~ msgstr "キャッシュファイル `%s' がありません。"
+
+#~ msgid "Cache file `%s' is broken at line %d.\n"
+#~ msgstr "キャッシュファイル `%s' が %d 行目において破壊されています。\n"
+
+#~ msgid "Configuration file `%s/.weex/weexrc' does not exist.\n"
+#~ msgstr "設定ファイル `%s/.weex/weexrc' がありません。\n"
+
+#~ msgid ""
+#~ "When you set ChangePermissionDir, you must configure ChangePermission.\n"
+#~ msgstr ""
+#~ "ChangePermissionDir を設定する時には ChangePermission "
+#~ "も合わせて設定しなくてはなりません。\n"
+
+#~ msgid "Expanding symbolic link failed: %s"
+#~ msgstr "シンボリックリンク展開失敗: %s"
+
+#~ msgid "Confliction by ConvToLower: %s"
+#~ msgstr "ConvToLower による衝突: %s"
+
+#~ msgid "Cannot get remote directory list.\n"
+#~ msgstr "リモートディレクトリのリストが取得できません。\n"
+
+#~ msgid "Getting remote directory list failed"
+#~ msgstr "リモートディレクトリリスト取得失敗"
+
+#~ msgid "Cannot get the remote directory list correctly.\n"
+#~ msgstr "リモートディレクトリのリストが正しく取得できません。\n"
+
+#~ msgid "Complete: sent %d file(s), removed %d file(s)"
+#~ msgstr "完了: %d 個のファイルを転送, %d 個のファイルを削除"
+
+#~ msgid "The source directory (SrcDir) is not configured.\n"
+#~ msgstr "ソースディレクトリ (SrcDir) が設定されていません。\n"
+
+#~ msgid "The destination directory (DestDir) is not configured.\n"
+#~ msgstr "ディスティネーションディレクトリ (DestDir) が設定されていません。\n"
+
+#~ msgid "Connection failed: %s (%s)"
+#~ msgstr "接続失敗: %s (%s)"
+
+#~ msgid "Connected: %s (%s)"
+#~ msgstr "接続: %s (%s)"
+
+#~ msgid "Disconnected: %s (%s)"
+#~ msgstr "切断: %s (%s)"
+
+#~ msgid "Login failed: %s (%s)"
+#~ msgstr "ログイン失敗: %s (%s)"
+
+#~ msgid "Cannot change %s current working directory to `%s'.\n"
+#~ msgstr "%sカレントディレクトリを `%s' に変更できません。\n"
+
+#~ msgid "local"
+#~ msgstr "ローカル"
+
+#~ msgid "remote"
+#~ msgstr "リモート"
+
+#~ msgid "Changing %s current working directory failed: %s"
+#~ msgstr "%sカレントディレクトリ変更失敗: %s"
+
+#~ msgid "Sent: %s%s"
+#~ msgstr "転送: %s%s"
+
+#~ msgid "Cannot change the access permissions of `%s%s' to `%s'.\n"
+#~ msgstr "`%s%s' のアクセスパーミッションを `%s' に変更できません。\n"
+
+#~ msgid "Changing the access permissions failed: %s%s"
+#~ msgstr "アクセスパーミッション変更失敗: %s%s"
+
+#~ msgid "Sending failed: %s%s"
+#~ msgstr "転送失敗: %s%s"
+
+#~ msgid "Retry to send: %s%s"
+#~ msgstr "転送再試行: %s%s"
+
+#~ msgid "Retrying...\n"
+#~ msgstr "再試行中...\n"
+
+#~ msgid "%s : sent %d file(s), removed %d file(s)"
+#~ msgstr "%s : %d 個のファイルを転送, %d 個のファイルを削除"
+
+#~ msgid "Removing failed: %s%s"
+#~ msgstr "削除失敗: %s%s"
+
+#~ msgid "Removed: %s%s"
+#~ msgstr "削除: %s%s"
+
+#~ msgid "Removing failed: %s%s/"
+#~ msgstr "削除失敗: %s%s/"
+
+#~ msgid "Cannot make remote directory `%s%s/'.\n"
+#~ msgstr "リモートディレクトリ `%s%s/' が作成できません。\n"
+
+#~ msgid "Making directory failed: %s%s/"
+#~ msgstr "ディレクトリ作成失敗: %s%s/"
+
+#~ msgid "Connect    : "
+#~ msgstr "接続      : "
+
+#~ msgid "Disconnect : "
+#~ msgstr "切断      : "
+
+#~ msgid "Entering   : "
+#~ msgstr "Enter中   : "
+
+#~ msgid "Leaving    : "
+#~ msgstr "Leave中   : "
+
+#~ msgid "Sending    : "
+#~ msgstr "転送中    : "
+
+#~ msgid "Changing   : "
+#~ msgstr "MOD変更中 : "
+
+#~ msgid "Removing   : "
+#~ msgstr "削除中    : "
+
+#~ msgid "Making Dir : "
+#~ msgstr "Dir作成中 : "
+
+#~ msgid "Processing : "
+#~ msgstr "処理中    : "
+
+#~ msgid "Invalid wildcard `%s'.\n"
+#~ msgstr "`%s' は使用できないワイルドカードです。\n"
+
+#~ msgid "Option `--test' conflicts with `--rebuild-cache'.\n"
+#~ msgstr "オプション `--test' は `--rebuild-cache' と衝突します。\n"
+
+#~ msgid ""
+#~ "Warning! Configuration file `%s/.weex/weexrc' does not exist.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "警告！ 設定ファイル `%s/.weex/weexrc' がありません。\n"
+#~ "\n"
+
+#~ msgid "Cannot get a host name. Proceed anyway.\n"
+#~ msgstr "ホスト名を取得できません。とにかく継続します。\n"
+
+#~ msgid "Stopped.\n"
+#~ msgstr "停止。\n"
+
+#~ msgid ""
+#~ "Log file `%s' seems to be always locked.\n"
+#~ "Remove lock file `%s'.\n"
+#~ msgstr ""
+#~ "ログファイル `%s' は常にロックされているように思えます。\n"
+#~ "ロックファイル `%s' を削除してください。\n"
+
+#~ msgid "Another weex is using log file `%s'. Just a moment.\n"
+#~ msgstr ""
+#~ "ログファイル `%s' は別の weex "
+#~ "によって使われています。しばらくお待ちください。\n"

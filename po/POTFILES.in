@@ -1,0 +1,10 @@
+./src/weex.c
+./src/ftplib.c
+./src/parsecfg.c
+./src/shhopt.c
+./src/strlib.c
+./src/config.c
+./src/mainloop.c
+./src/local.c
+./src/ftp.c
+./src/remote.c

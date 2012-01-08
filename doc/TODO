@@ -1,0 +1,94 @@
+STATUS ... o = done, x = implemented but not tested, ! = work in progress
+
+* parameters in a configuration file
+
+o HostName
+o LoginName
+o Password
+o LocalTopDir
+o RemoteTopDir
+o IgnoreLocalDir
+o IgnoreRemoteDir
+o IgnoreLocalFile
+o IgnoreRemoteFile
+o IgnoreFile
+o KeepLocalDir
+o KeepRemoteDir
+o KeepLocalFile
+o KeepRemoteFile
+o KeepFile
+o AsciiLocalDir
+o AsciiRemoteDir
+o AsciiLocalFile
+o AsciiRemoteFile
+o AsciiFile
+  PreservePermissionLocalDir
+  PreservePermissionRemoteDir
+  PreservePermissionLocalFile
+  PreservePermissionRemoteFile
+  PreservePermissionFile
+  ChangePermissionLocalDir
+  ChangePermissionRemoteDir
+  ChangePermissionLocalFile
+  ChangePermissionRemoteFile
+  ChangePermissionFile
+  CacheFile
+  RecordLog
+  LogFile
+  LogDetailLevel
+o NestSpaces
+  MaxRetryToSend
+  ConvToLower
+o OverwriteOK
+o Silent
+o SuppressProgress
+o SuppressNonErrorMessages
+  ExitOnMinorError
+o Monochrome
+o Force
+o FtpPassive
+o ShowHiddenFiles
+o FollowSymlinks
+o RegularExpression
+  DefaultTransferDirection
+  DetectingModificationMethod
+  AccessMethod
+  CacheFacility
+
+
+* command line options
+
+o --all-hosts
+o --config-file
+o --silent
+o --quiet
+o --suppress-progress
+o --force
+o --monochrome
+  --rebuild-cache
+o --not-mkdir-weex
+  --confirmation
+  --test
+o --list
+o --nlist
+o --view
+o --download
+o --upload
+  --debug
+o --help
+o --version
+
+
+* other features
+
+- Before connecting, weex checks whether any local file
+   is actually changed. Weex connects only when the remote
+   site needs updating.
+
+- Support for bidirectional transfer (It will be supported from Ver 3.0.0).
+
+- Update the cache after each file transfer
+
+- Man page update
+
+- Check that weex 2.6.x debian patches are also in weex 3.0.0
